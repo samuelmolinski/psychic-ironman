@@ -2,12 +2,13 @@
 
 	class Fb_pageController extends Controller {
 		public $fbURL = 'https://www.facebook.com/pages/SamplePage/220134694676331?sk=app_402784116453669';
-		
+
 		public function actionIndex() {
-			//SBaseFacebook::$CURL_OPTS[CURLOPT_CAINFO] =
-			// getcwd().'/assets/fb_ca_chain_bundle.crt';
-			//d(getcwd());
-			$this -> render('index', array('auth'=>$this->authenticate()));
+			$this -> render('index', array('auth' => $this -> authenticate()));
+		}
+
+		public function actionEspalhe() {
+			$this -> render('espalhe');
 		}
 
 		// -----------------------------------------------------------
@@ -45,12 +46,8 @@
 			if ($user) {
 				try {
 					$user_profile = @Yii::app() -> facebook -> api('/me');
-					// Here : API call succeeded, you have a valid access token
-					//d($user_profile);
 					return $user_profile;
 				} catch (FacebookApiException $e) {
-					// Here : API call failed, you don't have a valid access token
-					// you have to send him to $facebook->getLoginUrl()
 					return $user = null;
 				}
 			}
@@ -58,45 +55,31 @@
 		}
 
 		public function getFbLoginURL() {
-			return Yii::app() -> facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream', 'redirect_uri' => $this->fbURL));
-						
+			return Yii::app() -> facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream', 'redirect_uri' => $this -> fbURL));
+
 		}
-		
+
 		public function getAppData() {
 			$signed_request = Yii::app() -> facebook -> getSignedRequest();
-			d($signed_request);
 			$app_data = $signed_request["app_data"];
-			//inspect($signed_request);
 			$app_data = json_decode($app_data);
 			return $app_data;
 		}
 
-		/*
-		 public function authenticate() {
-		 $fbURL =
-		 'https://www.facebook.com/pages/SamplePage/220134694676331?sk=app_402784116453669';
-		 $facebook_id = Yii::app() -> facebook -> getUser();
-		 $user_info = Yii::app() -> facebook -> api('/me');
-		 if ($user_info) {
-		 $user = User::model() -> find('facebook_id=?', array($facebook_id));
-		 if ($user === null)
-		 return $this -> errorCode == self::ERROR_UNKNOWN_IDENTITY;
-		 else {
-		 $this -> _id = $user -> id;
-		 $this -> _username = $user -> username;
-		 $this -> _name = $user -> username;
-		 $this -> errorCode = self::ERROR_NONE;
-		 $this -> setState('fullName', $user_info['first_name'] . " " .
-		 $user_info['last_name']);
-		 $this -> setState('avatar', Yii::app() -> facebook ->
-		 getProfilePicture('large'));
-		 $this -> setState('avatarThumb', Yii::app() -> facebook ->
-		 getProfilePicture('square'));
-		 }
-		 } else
-		 return $this -> errorCode == self::ERROR_UNKNOWN_IDENTITY;
-		 return $this -> errorCode == self::ERROR_NONE;
-		 }*/
+		public function generateFanpageLink($app_data) {
+			$app_data = urlencode(json_encode($app_data));
+			$p = strpos($this -> fbURL, '?');
+			if (NULL != $app_data) {
+				if (FALSE === $p) {
+					$fbURL = $this -> fbURL . '?' . $app_data;
+				} else {
+					$fbURL = $this -> fbURL . '&' . $app_data;
+				}
+				return $fbURL;
+			} else {
+				return NULL;
+			}
+		}
 
 		protected function afterRender($view, &$output) {
 			parent::afterRender($view, $output);
