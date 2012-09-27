@@ -16,3 +16,5 @@ Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
 
 <?php echo CHtml::link('fb_page link', array('fb_page/index')); ?>
+<?php echo CHtml::link('fb_page link', array('fb_page/fanpage')); ?>
+<?php echo CHtml::link('fb_page link', array('fb_page/espelhe')); ?>
