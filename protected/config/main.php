@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Poder Do Seu Curtir',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -32,12 +32,11 @@ return array(
 
 	// application components
 	'components'=>array(
-		'user'=>array(
+		'session' => array('autoStart' => true, ),
+		'user' => array(
 			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
-		),
+			'allowAutoLogin' => true, ),
 		// uncomment the following to enable URLs in path-format
-		/*
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
@@ -45,11 +44,30 @@ return array(
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-		),
-		*/
-		'db'=>array(
+		),/* */
+		'facebook'=>array(
+	        'class' => 'ext.yii-facebook-opengraph.SFacebook',
+	        'appId'=>'402784116453669', // needed for JS SDK, Social Plugins and PHP SDK
+	        'secret'=>'b1d8c5d95c442f4176f2c90f54945d62', // needed for the PHP SDK
+	        //'locale'=>'en_US', // override locale setting (defaults to en_US)
+	        //'jsSdk'=>true, // don't include JS SDK
+	        //'async'=>true, // load JS SDK asynchronously
+	        //'jsCallback'=>false, // declare if you are going to be inserting any JS callbacks to the async JS SDK loader
+	        //'status'=>true, // JS SDK - check login status
+	        'cookie'=>true, // JS SDK - enable cookies to allow the server to access the session
+	        //'oauth'=>true,  // JS SDK - enable OAuth 2.0
+	        //'xfbml'=>true,  // JS SDK - parse XFBML / html5 Social Plugins
+	        //'frictionlessRequests'=>true, // JS SDK - enable frictionless requests for request dialogs
+	        'html5'=>true,  // use html5 Social Plugins instead of XFBML
+	        'ogTags'=>array(  // set default OG tags
+	            'title'=>'Poder do Seu Curtir',
+	            'description'=>'MY_WEBSITE_DESCRIPTION',
+	            'image'=>'URL_TO_WEBSITE_LOGO',
+	        ),
+	      ),
+		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
+		),*/
 		// uncomment the following to use a MySQL database
 		/*
 		'db'=>array(
@@ -85,6 +103,7 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'contato@cabanacriacao.com',
+		'root' => 'http://cabanapps.com.br/apps/poderDoSeuCurtir/',
 	),
 );
