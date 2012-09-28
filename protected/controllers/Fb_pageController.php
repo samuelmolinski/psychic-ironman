@@ -1,10 +1,19 @@
 <?php
 
 	class Fb_pageController extends Controller {
+		public $layout = 'fb';
 		public $fbURL = 'https://www.facebook.com/pages/SamplePage/220134694676331?sk=app_402784116453669';
 
 		public function actionIndex() {
-			$this -> render('index', array('auth' => $this -> authenticate()));
+			$appData = @$this->getAppData();
+			d($appData);	
+			//redirect for our static pages				
+			if($appData) {
+				$this -> render('fanpage', $appData);
+			} else {
+				$this -> render('index', array('auth' => $this -> authenticate()));
+			}
+			
 		}
 
 		public function actionEspalhe() {
@@ -27,6 +36,7 @@
 				//get only post with comments
 				$commentFeed = array();
 				$mostComments = array();
+				$commenters = array();
 				foreach ($user_feed['data'] as $k => $post) {
 					//d($post);
 					//d($post['comments']['count']);
@@ -66,9 +76,15 @@
 					//d($friendsNeed);
 					//d($mostComments);
 				}
-				$shareLink = generateFanpageLink(array('userId'=>$appData->userID, 'id1'=>$mostComments[0], 'id2'=>$mostComments[1], 'id3'=>$mostComments[2]));
+				foreach($mostComments as $k =>$v){
+					$commenters[] = $k;
+				}
+				d($mostComments);
+				$arr = array('userId'=>$auth['id'], 'id0'=>$commenters[0], 'id1'=>$commenters[1], 'id2'=>$commenters[2], 'id3'=>$commenters[3]);
+				d($arr);
+				$shareLink = $this->generateFanpageLink($arr);
 				d($shareLink);
-				$this -> render('fanpage', array('userId'=>$appData->userID, 'id1'=>$mostComments[0], 'id2'=>$mostComments[1], 'id3'=>$mostComments[2], 'shareLink'=> $shareLink));
+				$this -> render('fanpage', array('userId'=>$appData->userID, 'commenters'=>$commenters, 'shareLink'=> $shareLink));
 			
 			} else {
 				$this -> redirect('index');
@@ -105,6 +121,7 @@
 
 		public function generateFanpageLink($app_data) {
 			$app_data = urlencode(json_encode($app_data));
+			$app_data = 'app_data=' . $app_data;
 			$p = strpos($this -> fbURL, '?');
 			if (NULL != $app_data) {
 				if (FALSE === $p) {
