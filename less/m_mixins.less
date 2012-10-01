@@ -18,6 +18,10 @@ Helpful Articles or Links:
 
 ******************************************************************/
 
+@imgPath:            '../images';
+
+@import "fonts"; 
+
 /*********************
 TOOLS
 *********************/
@@ -110,6 +114,13 @@ BUTTONS
 		
 }
 
+.btn {
+	background-repeat:no-repeat;
+	background-position: top;
+	&:hover {
+		background-position: bottom;
+	}
+}
 
 /*********************
 TYPOGRAPHY

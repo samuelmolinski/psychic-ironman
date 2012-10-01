@@ -38,6 +38,7 @@ body {
 	color: #565656;
 	min-width:810px;
 	width: 100%;
+	border-top: solid 12px #eb2a3e;
 }
 
 /*********************
@@ -225,161 +226,101 @@ NAVIGATION STYLES
 POSTS & CONTENT STYLES
 *********************/
 .container {
-	border-top:solid 12px #eb2a3e;
+	//border-top:solid 12px #eb2a3e;
 	width: 810px;
 	margin: 0 auto;
 }
+
 #content { 
 	margin-top: 2.2em; 
 }
-	
-		.hentry {
-		
-			header {}
-			
-			footer {}
-		
-		} /* end .hentry */
-		
-		.single-title, 
-		.page-title {}
-		
-		.single-title {}
-		
-		.page-title {}
-		
-		.archive_title { }
-	
-		/* want to style individual post classes? Booya! */
-		.post-id {} /* post by id (i.e. post-3) */
-		.post {} /* general post style */
-		.page {} /* general article on a page style */
-		.attachment {} /* general style on an attatchment */
-		.sticky {} /* sticky post style */
-		.hentry {} /* hentry class */
-		.category-slug {} /* style by category (i.e. category-videos) */
-		.tag-slug {} /* style by tag (i.e. tag-news) */
-	
-		/* post meta */
-		.meta {
-			color: #999;
-		
-			time {}
-		}
-			
-		/* post content */
-		.post-content {
-			
-			p {}
-			
-			
-			ul, ol, table, dl {}
-			
-			ul, ol {
-				
-				li {}
-			
-			}
-			
-			ul {
-			
-				li {}
-			
-			}
-			
-			ol {
-			
-				li {}
-			
-			}
-			
-			blockquote {
-				
-				&:before {}
-			
-			}
-			
-			dl {}
-			
-			dt {}
-			
-			dd {
-				margin-left: 0;
-				font-size: 0.9em;
-				color: #787878;
-				margin-bottom: 1.5em;
-			}
-			
-			img { 
-				margin: 0 0 1.5em 0; 
-				max-width: 100%; 
-			}
-			
-			/*
-			image alignment on a screen this size may be
-			a bit difficult. It's set to start aligning 
-			and floating images at the next breakpoint,
-			but it's up to you. Feel free to change it up.
-			*/
-			.alignleft, img.alignleft {}
-			.alignright, img.alignright {}
-			.aligncenter, img.aligncenter {}
-			
-			video, object { 
-				max-width: 100%; 
-			}
-			
-			pre, code {
-				background: #eee;
-				border: 1px solid #cecece;
-				padding: 10px;
-			}
-			
-		} /* end .post-content */
-			
-		.wp-caption {
-			background: #eee;
-			padding: 5px;
-			
-			/* images inside wp-caption */
-			img {
-				margin-bottom: 0;
-				width: 100%;
-			}
-			
-			p.wp-caption-text {
-				font-size: 0.85em;
-				margin: 4px 0 7px;
-				text-align: center;
-			}
-			
-		} /* end .wp-caption */
-			
-		/* image gallery styles */
-		.gallery {
-			
-			dl {
-				
-				a {}
-			
-				img {}
-				
-			}
-			
-			dt {}
-			
-			dd {}
-		
-		} /* end .gallery */
-		
-		/* gallery caption styles */	
-		.gallery-caption {}
-		
-		.size-full {}
-		.size-large {}
-		.size-medium {}
-		.size-thumbnail {}
 
+#logoVideo {
+	margin-top: 30px;
+	
+	.cutir {
+		width: 300px;
+		float: left;
+		
+		img {
+			display: block;
+			margin: auto;
+		}
+		.msf-logo {
+			width: 155px;
+		}
+		.msf-curtir {
+			margin-top:6px;
+			width: 190px;
+		}
+	}
+	.mainVideo {
+		background: url('@{imgPath}/bg-video.png'); 
+		width:509px;
+		height:352px;
+		float: right;
+		
+		
+		iframe {
+			margin: 7px 0 0 17px;
+		}
+	}
+}	
+#network {
+	margin-top: 30px;
+	
+	.rede {
+		float:left;
+		margin-left: 30px;
+	}
+	.underMainVideo {
+		float:left;
+		margin-top: 57px;
+		margin-left: 36px;
+		
+		.auth {
+			background: url('@{imgPath}/network-sueCurtir.png') no-repeat; 
+			min-width:241px;
+			padding-top:115px;
+			float:left;
+			width:260px;
+			border-right:solid 3px #a0a0a0;
+			
+			.connectFacebook {
+				width: 183px;
+				height: 31px;
+				background-image: url('@{imgPath}/ui-button-facebook.png');
+			}
+		}
+		
+		.curtirCount {
+			float:left;
+			width:200px;
+			margin-left: 20px;
+			background-image: url('@{imgPath}/curtirCount.png');
+			background-position: 0 65px;
+			background-repeat:no-repeat;
+			
+			.count {
+				margin-top: -7px;
+				font-family: 'HelveticaRoundedLTStd-BdCn';
+				font-size:60px;
+				color: #19315f;	
+				letter-spacing: -4px;
+				text-align: right;
+				line-height: 1em;
+				margin-bottom: 75px;
+			}
+			
+			.curtir {
+				width: 80px;
+				height: 32px;
+				margin-top: 7px;
+				background-image: url('@{imgPath}/ui-button-curtir.png');
+			}
+		}		
+	}
+}
 /******************************************************************
 PAGE NAVI STYLES
 ******************************************************************/
