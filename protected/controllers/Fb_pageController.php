@@ -6,10 +6,13 @@
 
 		public function actionIndex() {
 			$appData = @$this->getAppData();
-			d($appData);	
+			//d($appData);	
 			//redirect for our static pages				
 			if($appData) {
-				$this -> render('fanpage', $appData);
+				//$this -> render('fanpage', $appData);
+				$url = Yii::app()->createUrl('fb_page/fanpage',array( 'app_data' => json_encode($app_data)));
+				$this->redirect($url);
+				//$this -> redirect('fanpage');
 			} else {
 				$this -> render('index', array('auth' => $this -> authenticate()));
 			}

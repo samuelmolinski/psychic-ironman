@@ -104,6 +104,7 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'contato@cabanacriacao.com',
-		'root' => 'http://cabanapps.com.br/apps/poderDoSeuCurtir/',
+		'root' => 'http://192.168.0.22/poderDoSeuCurtir',
+		//'root' => 'http://cabanapps.com.br/apps/poderDoSeuCurtir/',
 	),
 );
