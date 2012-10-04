@@ -14,6 +14,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->params['root']; ?>/css/m_style.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->params['root']; ?>/css/m_base.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->params['root']; ?>/css/form.css" />
+	<!-- scripts -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
