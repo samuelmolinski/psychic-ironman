@@ -18,6 +18,12 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+	<script type="text/javascript">
+		var FacebookURL = '<?php echo Fb_pageController::genRedirect($this->getAction()->getId()); ?>';
+		if (self.location == top.location) {
+			setTimeout(top.location.href = FacebookURL, 200);
+		} 
+	</script>
 </head>
 
 <body>
@@ -49,5 +55,7 @@
 		<div class="text">Todo o conteúdo nas páginas com domínio msf.org.br é propriedade de Médicos Sem Fronteiras Brasil.<br />Este conteúdo está protegido com direitos reservados e outras leis de propriedade intelectual.</div>		
 	</div>
 </div><!-- footer -->
+<?php //d($this); ?>
+<?php //d(get_defined_vars()); ?>
 </body>
 </html>

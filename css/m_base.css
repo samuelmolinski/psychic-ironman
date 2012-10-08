@@ -82,13 +82,14 @@ h5,.h5{font-size:0.846em;line-height:2.09em;text-transform:uppercase;letter-spac
 #logoVideo .cutir .msf-curtir{margin-top:6px;width:190px;}
 #logoVideo .mainVideo{background:url('../images/bg-video.png');width:509px;height:352px;float:right;}#logoVideo .mainVideo iframe{margin:7px 0 0 17px;}
 #network{margin-top:30px;}#network .rede{float:left;}
-#network .underMainVideo{float:left;margin-top:57px;margin-left:13px;}#network .underMainVideo .auth{background:url('../images/network-sueCurtir.png') no-repeat;min-width:241px;padding-top:115px;float:left;width:260px;border-right:solid 3px #a0a0a0;}#network .underMainVideo .auth .connectFacebook{width:183px;height:31px;background-image:url('../images/ui-button-facebook.png');}
+#network .underMainVideo{float:left;margin-top:57px;margin-left:13px;}#network .underMainVideo .auth{background:url('../images/network-sueCurtir.png') no-repeat;min-width:241px;padding-top:115px;float:left;width:260px;border-right:solid 3px #a0a0a0;}#network .underMainVideo .auth .connectFacebook{display:inline-block;width:183px;height:31px;background-image:url('../images/ui-button-facebook.png');}
 #network .underMainVideo .curtirCount{float:left;width:200px;margin-left:20px;background-image:url('../images/curtirCount.png');background-position:0 65px;background-repeat:no-repeat;}#network .underMainVideo .curtirCount .count{margin-top:-7px;font-family:'HelveticaRoundedLTStd-BdCn';font-size:60px;color:#19315f;letter-spacing:-4px;text-align:right;line-height:1em;margin-bottom:75px;}
 #network .underMainVideo .curtirCount .curtir{width:80px;height:32px;margin-top:7px;background-image:url('../images/ui-button-curtir.png');}
 #videos{margin-top:30px;}#videos .title{width:100%;height:81px;background-image:url('../images/layout-quemCurte.png');background-repeat:no-repeat;}
 #videos .presentedVideos{width:100%;height:200px;margin-top:10px;}#videos .presentedVideos #currentVideo{float:left;}
 #videos .presentedVideos .videoThumbnails{float:left;width:360px;margin-left:10px;}#videos .presentedVideos .videoThumbnails ul{display:block;margin:0;}
-#videos .presentedVideos .videoThumbnails li{list-style:none;float:left;margin:0 0 5px 5px;position:relative;}#videos .presentedVideos .videoThumbnails li .icon-play{position:absolute;background-image:url('../images/icon-play.png');background-repeat:none;display:block;width:37px;height:26px;top:62px;left:8px;}
+#videos .presentedVideos .videoThumbnails li{list-style:none;float:left;margin:0 0 10px 5px;position:relative;}#videos .presentedVideos .videoThumbnails li .icon-play{position:absolute;background-image:url('../images/icon-play.png');background-repeat:none;display:block;width:37px;height:26px;top:62px;left:8px;}
+#videos .presentedVideos .videoThumbnails li.cur{display:none;}
 #callToAction{margin-top:30px;}#callToAction .espalhe{border-right:dotted 3px #365a9e;width:371px;height:230px;float:left;text-align:center;}
 #callToAction .volunteer{float:left;text-align:center;width:371px;height:230px;}
 #callToAction a{display:inline-block;}#callToAction a>img{display:block;}
@@ -121,7 +122,7 @@ h5,.h5{font-size:0.846em;line-height:2.09em;text-transform:uppercase;letter-spac
 #allowed_tags{margin:1.5em 10px 0.7335em 0;}
 .nocomments{margin:0 20px 1.1em;}
 .widget ul li{}
-#footer{min-height:110px;clear:both;background-image:url(../images/black-o05.png);}#footer>div{margin-top:32px;margin:0 auto;width:650px;margin-top:35px;}
+#footer{margin-top:30px;min-height:110px;clear:both;background-image:url(../images/black-o05.png);}#footer>div{margin-top:32px;margin:0 auto;width:650px;margin-top:35px;}
 #footer .text{font-size:10px;line-height:1em;margin-top:24px;padding-left:8px;}
 #footer .logo>img{display:block;}
 #footer .logo,#footer .text{float:left;}

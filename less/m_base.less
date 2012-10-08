@@ -286,6 +286,7 @@ POSTS & CONTENT STYLES
 			border-right:solid 3px #a0a0a0;
 			
 			.connectFacebook {
+				display: inline-block;
 				width: 183px;
 				height: 31px;
 				background-image: url('@{imgPath}/ui-button-facebook.png');
@@ -349,7 +350,7 @@ POSTS & CONTENT STYLES
 			li {
 				list-style:none;
 				float:left;
-				margin: 0 0 5px 5px;
+				margin: 0 0 10px 5px;
 				position: relative;
 
 				.icon-play {
@@ -362,6 +363,7 @@ POSTS & CONTENT STYLES
 					top: 62px;
 					left: 8px;
 				}
+				&.cur {display: none;}
 			}
 		}
 	}
@@ -802,6 +804,7 @@ FOOTER STYLES
 *********************/
 
 #footer {
+	margin-top: 30px;
 	min-height:110px;
 	clear: both;
 	background-image: url(../images/black-o05.png);

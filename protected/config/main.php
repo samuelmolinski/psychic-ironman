@@ -49,7 +49,7 @@ return array(
 	        'class' => 'ext.yii-facebook-opengraph.SFacebook',
 	        'appId'=>'402784116453669', // needed for JS SDK, Social Plugins and PHP SDK
 	        'secret'=>'b1d8c5d95c442f4176f2c90f54945d62', // needed for the PHP SDK
-	        //'locale'=>'en_US', // override locale setting (defaults to en_US)
+	        'locale'=>'pt_BR', // override locale setting (defaults to en_US)
 	        //'jsSdk'=>true, // don't include JS SDK
 	        //'async'=>true, // load JS SDK asynchronously
 	        //'jsCallback'=>false, // declare if you are going to be inserting any JS callbacks to the async JS SDK loader
@@ -104,7 +104,8 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'contato@cabanacriacao.com',
-		'root' => 'http://192.168.0.22/poderDoSeuCurtir',
-		//'root' => 'http://cabanapps.com.br/apps/poderDoSeuCurtir/',
+		'FB_url' => 'https://www.facebook.com/MedicosSemFronteiras/app_402784116453669',
+		//'root' => 'http://cabanapps.com.br/apps/poderDoSeuCurtir',
+		'root' => 'https://www.msf.org.br/poderdoseucurtir',
 	),
 );
