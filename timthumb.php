@@ -30,7 +30,7 @@ if(! defined('BLOCK_EXTERNAL_LEECHERS') ) 	define ('BLOCK_EXTERNAL_LEECHERS', fa
 
 //Image fetching and caching
 if(! defined('ALLOW_EXTERNAL') )			define ('ALLOW_EXTERNAL', TRUE);						// Allow image fetching from external websites. Will check against ALLOWED_SITES if ALLOW_ALL_EXTERNAL_SITES is false
-if(! defined('ALLOW_ALL_EXTERNAL_SITES') ) 	define ('ALLOW_ALL_EXTERNAL_SITES', false);				// Less secure. 
+if(! defined('ALLOW_ALL_EXTERNAL_SITES') ) 	define ('ALLOW_ALL_EXTERNAL_SITES', TRUE);				// Less secure. 
 if(! defined('FILE_CACHE_ENABLED') ) 		define ('FILE_CACHE_ENABLED', TRUE);					// Should we store resized/modified images on disk to speed things up?
 if(! defined('FILE_CACHE_TIME_BETWEEN_CLEANS'))	define ('FILE_CACHE_TIME_BETWEEN_CLEANS', 86400);	// How often the cache is cleaned 
 
@@ -133,6 +133,8 @@ if(! isset($ALLOWED_SITES)){
 		'imgur.com',
 		'imageshack.us',
 		'tinypic.com',
+		'https://graph.facebook.com/',
+		'https://fbcdn-profile-a.akamaihd.net'
 	);
 }
 // -------------------------------------------------------------
@@ -916,6 +918,7 @@ class timthumb {
 		//if using realpath, any symlinks will also be resolved
 		return preg_match('#^\.\./|/\.\./#', $path) ? realpath($path) : $path;
 	}
+	
 	protected function toDelete($name){
 		$this->debug(3, "Scheduling file $name to delete on destruct.");
 		$this->toDeletes[] = $name;

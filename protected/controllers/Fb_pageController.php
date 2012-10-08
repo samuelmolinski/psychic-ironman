@@ -42,13 +42,12 @@
 		public function actionFanpage() {
 			//$auth = $this->authenticate();
 			//$userinfo = Yii::app()->facebook->getInfo();
-			//$user = Yii::app()->facebook->getUser();
-			d($user);
+			$user = Yii::app()->facebook->getUser();
+			//d($user);
 			$appData = @$this->getAppData();
-				d($auth);					
-				d($appData);					
+			//d($appData);					
 			if($appData && $appData->userID && $appData->id0 && $appData->id1 && $appData->id2 && $appData->id3){
-				$this -> render('fanpage', array('userId'=>$appData->userID, 'id0'=>$appData->id0, 'id1'=>$appData->id1, 'id2'=>$appData->id2, 'id2'=>$appData->id3, 'shareLink'=> $shareLink));
+				$this -> render('fanpage', array('userId'=>$appData->userID, 'id0'=>$appData->id0, 'id1'=>$appData->id1, 'id2'=>$appData->id2, 'shareLink'=> $shareLink));
 			}
 			if($user){
 				//if we have fb appdata lets us it to render the page
@@ -71,7 +70,7 @@
 				foreach($commentFeed as $k=>$comments){
 					if($comments['comments']['data']){
 						foreach($comments['comments']['data'] as $j=>$comment){
-							if($auth['id']!=$comment['from']['id']){
+							if($user!=$comment['from']['id']){
 								if(!key_exists($comment['from']['id'], $mostComments)) {
 									$mostComments[$comment['from']['id']] = 1;
 								} else {
@@ -83,9 +82,8 @@
 				}
 				//d($mostComments);
 				if (count($mostComments)>=4) {
-					asort($mostComments);						
+					arsort($mostComments);						
 				} else {
-					asort($mostComments);	
 					$needed = 4-count($mostComments);
 					//$needed = 1;
 					$friendsNeed = array_rand($user_friends['data'], $needed);
@@ -98,20 +96,21 @@
 					}
 					//d($friendsNeed);
 					//d($mostComments);
+					arsort($mostComments);	
 				}
 				foreach($mostComments as $k =>$v){
 					$commenters[] = $k;
 				}
-				d($mostComments);
-				$arr = array('userId'=>$auth['id'], 'id0'=>$commenters[0], 'id1'=>$commenters[1], 'id2'=>$commenters[2], 'id3'=>$commenters[3]);
-				d($arr);
+				//d($mostComments);
+				$arr = array('userId'=>$user, 'id0'=>$commenters[0], 'id1'=>$commenters[1], 'id2'=>$commenters[2]);
+				//d($arr);
 				$shareLink = $this->generateFanpageLink($arr);
-				d($shareLink);
-				$this -> render('fanpage', array('userId'=>$appData->userID, 'commenters'=>$commenters, 'shareLink'=> $shareLink));
+				//d($shareLink);
+				$this -> render('fanpage', array('userId'=>$user, 'id0'=>$commenters[0], 'id1'=>$commenters[1], 'id2'=>$commenters[2], 'shareLink'=> $shareLink));
 			
 			} else {
-				$this -> render('fanpage');
-				//$this -> redirect('index');
+				//$this -> render('fanpage');
+				$this -> redirect('index');
 			}
 		}
 
