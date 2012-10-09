@@ -26,7 +26,7 @@
 	$friends = Yii::app()->facebook->api("/$userId/friends");
 	$user['friendCount'] = count($friends['data'])+1;
 	$root = Yii::app()-> params['root'];
-	d($user);
+	//d($user);
 
 	if($me['id']==$userId['id']) {
 		$visitor = false;
@@ -35,21 +35,23 @@
 	}
 ?>
 
-<div>
+<div id='fanpage'>
 	<img id="poderDoSueCurtirLG" src="<?php echo Yii::app()->params['root']; ?>/images/logo-poderDoSeuCurtir.png"/>
-	<hr class="por part"/><span class="abel">POR</span><hr class="por part"/>
-	<span class="userName"><?php echo $user['name']; ?></span>
-	<hr class="por"/>
+	<div class="userTitle">
+		<span class='intro'><hr class="por part"/><span class="subtitle">POR</span><hr class="por part"/></span>
+		<span class="userName"><?php echo $user['name']; ?></span>
+		<hr class="bot"/>
+	</div>
 	<div class="abel">
 	<?php if($visitor) { ?>
 	<p>Quando o Leonardo Brossa curte ou compartilha nossos<br />conteúdos, ele destaca a nossa atuação para seus </p>
 	<?php } else { ?>
 	<p>Quando você curte ou compartilha nossos<br />conteúdos, destaca a nossa atuação para seus </p>
 	<?php } ?>
-	<span class="friendCount"><?php echo $userId['friendCount'] ?> Amigos</span>
+	<span class="friendCount fb_font"><?php echo $userId['friendCount'] ?> Amigos</span>
 	<p>Mas o potencial real é muito maior, chegando a</p>
 	</div>
-	<div class="curtirRibbon"><span class="improvedfriendCount"><?php echo $userId['friendCount']*3 ?> Amigos</span></div>
+	<div class="curtirRibbon"><span class="improvedfriendCount fb_font"><?php echo $userId['friendCount']*3 ?> Amigos</span></div>
 	<p>Dessa forma, a crise no Sudão do Sul, por exemplo, pode fazer parte de debates com<br />pessoas com quem ele costuma interagir.</p>
 	<div id="connections">
 		<div id="friend0">

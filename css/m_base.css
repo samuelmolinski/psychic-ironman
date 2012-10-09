@@ -95,6 +95,13 @@ h5,.h5{font-size:0.846em;line-height:2.09em;text-transform:uppercase;letter-spac
 #callToAction{margin-top:30px;}#callToAction .espalhe{border-right:dotted 3px #365a9e;width:371px;height:230px;float:left;text-align:center;}
 #callToAction .volunteer{float:left;text-align:center;width:371px;height:230px;}
 #callToAction a{display:inline-block;}#callToAction a>img{display:block;}
+#fanpage{font-family:"Abel",Helvetica,Arial,sans-serif;text-align:center;}
+#poderDoSueCurtirLG{width:295px;margin:30px auto 0;display:block;}
+hr{margin:0;border:none;border-top:solid 2px #3372b6;margin-bottom:.4em;}hr.por{display:inline-block;margin:0;border:none;border-top:solid 2px #3372b6;margin-bottom:.7em;}hr.por.part{width:265px;}
+hr.bot{width:608px;margin:auto;border-width:3px;}
+.userTitle{margin-top:30px;}.userTitle span.intro{width:100%;display:inline-block;}.userTitle span.intro span.subtitle{font-size:30px;padding:0 .5em;}
+.userTitle .userName{font-size:78px;line-height:.9em;margin:0;padding:0 0 20px;display:inline-block;width:810px;color:#000;}
+.friendCount{font-size:70px;color:#bd0000;}
 .page-navigation,.wp-prev-next{margin:1.1em 0 2.2em;}
 .bones_page_navi{}.bones_page_navi li{float:left;margin-left:10px;}.bones_page_navi li a{padding:3px 6px;display:block;text-decoration:none;position:relative;}.bones_page_navi li a:hover,.bones_page_navi li a:focus{color:#f01d4f;text-decoration:underline;}
 .bones_page_navi li.bpn-current{padding:3px 6px;border-bottom:2px solid #f01d4f;position:relative;}.bones_page_navi li.bpn-current a{}
