@@ -263,7 +263,7 @@
 	    $response = curl_exec($this->curl);
 	    if (!curl_errno($this->curl)) {
 	        $info = curl_getinfo($this->curl);
-	        var_dump($info);
+	        //var_dump($info);
 	        if ($info["http_code"] == 302) {
 	            $headers = $this->getHeaders();
 	            if (isset($headers['fileUrl'])) {

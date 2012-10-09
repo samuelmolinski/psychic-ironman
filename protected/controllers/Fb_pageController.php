@@ -3,6 +3,7 @@
 	class Fb_pageController extends Controller {
 		public $layout = 'fb';
 		public $fbURL = 'https://www.facebook.com/MedicosSemFronteiras/app_402784116453669';
+		public $fbAappData;
 		//public $fbURL = 'https://www.facebook.com/pages/SamplePage/220134694676331?sk=app_402784116453669';
 
 		public function actionIndex() {
@@ -24,7 +25,7 @@
 					//$fbConnectLink = "<a href='#' target='_top class='btn connectFacebook'></a>";
 				}
 				// redirect to fanpage if has the approprate appdata
-				if($appData && $appData->userID && $appData->id0 && $appData->id1 && $appData->id2 && $appData->id3) {
+				if($appData && $appData->userId && $appData->id0 && $appData->id1 && $appData->id2) {
 					//$this -> render('fanpage', $appData);
 					$url = Yii::app()->createUrl('fb_page/fanpage',array( 'app_data' => json_encode($app_data)));
 					$this->redirect($url);
@@ -45,12 +46,12 @@
 			$user = Yii::app()->facebook->getUser();
 			//d($user);
 			$appData = @$this->getAppData();
-			//d($appData);					
+			//d($appData);		
+			//if we have fb appdata lets us it to render the page			
 			if($appData && $appData->userID && $appData->id0 && $appData->id1 && $appData->id2 && $appData->id3){
-				$this -> render('fanpage', array('userId'=>$appData->userID, 'id0'=>$appData->id0, 'id1'=>$appData->id1, 'id2'=>$appData->id2, 'shareLink'=> $shareLink));
+				$this -> render('fanpage', array('userId'=>$appData->userID, 'id0'=>$appData->id0, 'id1'=>$appData->id1, 'id2'=>$appData->id2));
 			}
 			if($user){
-				//if we have fb appdata lets us it to render the page
 				//time to generate ids of 'friends'					
 				$timeUntil = time() - (3600 * 24 * 90);
 				$user_feed = Yii::app() -> facebook -> api("/me/feed?until=$timeUntil&metadata=1&limit=500");
@@ -60,16 +61,10 @@
 				$mostComments = array();
 				$commenters = array();
 				foreach ($user_feed['data'] as $k => $post) {
-					//d($post);
 					//d($post['comments']['count']);
-					if ($post['comments']['count'] != 0) {
-						array_push($commentFeed, $post);
-					}
-				}
-				//d($auth['id']);
-				foreach($commentFeed as $k=>$comments){
-					if($comments['comments']['data']){
-						foreach($comments['comments']['data'] as $j=>$comment){
+					if (($post['comments']['count'] != 0)&&($post['comments']['data'])) {
+					//d($post);
+						foreach($post['comments']['data'] as $j=> $comment){
 							if($user!=$comment['from']['id']){
 								if(!key_exists($comment['from']['id'], $mostComments)) {
 									$mostComments[$comment['from']['id']] = 1;
@@ -80,7 +75,6 @@
 						}
 					}
 				}
-				//d($mostComments);
 				if (count($mostComments)>=4) {
 					arsort($mostComments);						
 				} else {
@@ -94,8 +88,6 @@
 							$mostComments[$user_friends['data'][$index]['id']] = 1;
 						}
 					}
-					//d($friendsNeed);
-					//d($mostComments);
 					arsort($mostComments);	
 				}
 				foreach($mostComments as $k =>$v){
@@ -159,10 +151,14 @@
 		}
 
 		public function getAppData() {
-			$signed_request = Yii::app() -> facebook -> getSignedRequest();
-			$app_data = $signed_request["app_data"];
-			$app_data = json_decode($app_data);
-			return $app_data;
+			if(!$this->fbAappData){
+				$signed_request = Yii::app() -> facebook -> getSignedRequest();
+				$app_data = $signed_request["app_data"];
+				$app_data = json_decode($app_data);
+				return $app_data;
+			} else {
+				return $this->fbAappData;
+			}
 		}
 
 		public function genRedirect($pageName) {
@@ -185,16 +181,12 @@
 			$app_data = urlencode(json_encode($app_data));
 			$app_data = 'app_data=' . $app_data;
 			$p = strpos($this->fbURL, '?');
-			if (NULL != $app_data) {
-				if (FALSE === $p) {
-					$fbURL = $this->fbURL . '?' . $app_data;
-				} else {
-					$fbURL = $this->fbURL . '&' . $app_data;
-				}
-				return $fbURL;
+			if (FALSE === $p) {
+				$fbURL = $this->fbURL . '?' . $app_data;
 			} else {
-				return NULL;
+				$fbURL = $this->fbURL . '&' . $app_data;
 			}
+			return $fbURL;
 		}
 
 		protected function afterRender($view, &$output) {

@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Poder Do Seu Curtir',
+	'name'=>'Poder Do Curtir',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -106,6 +106,6 @@ return array(
 		'adminEmail'=>'contato@cabanacriacao.com',
 		'FB_url' => 'https://www.facebook.com/MedicosSemFronteiras/app_402784116453669',
 		//'root' => 'http://cabanapps.com.br/apps/poderDoSeuCurtir',
-		'root' => 'https://www.msf.org.br/poderdoseucurtir',
+		'root' => 'https://www.msf.org.br/poderdocurtir',
 	),
 );
