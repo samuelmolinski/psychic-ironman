@@ -77,6 +77,7 @@ h4,.h4{font-size:1.1em;font-weight:700;}
 h5,.h5{font-size:0.846em;line-height:2.09em;text-transform:uppercase;letter-spacing:2px;}
 .menu{margin:1.1em 0;}.menu ul{}.menu ul li{}.menu ul li a{display:block;text-decoration:none;padding:10px 10px;background-color:#eee;border-bottom:1px solid #ccc;}
 .menu ul li ul.sub-menu li a,.menu ul li ul.children li a{padding-left:30px;}
+#backend .container{width:950px;}
 .container{width:750px;margin:0 auto;}
 #content{margin-top:2.2em;}
 #logoVideo{margin-top:30px;}#logoVideo .cutir{width:230px;float:left;}#logoVideo .cutir img{display:block;margin:auto;}
@@ -95,7 +96,7 @@ h5,.h5{font-size:0.846em;line-height:2.09em;text-transform:uppercase;letter-spac
 #callToAction{margin-top:30px;}#callToAction .espalhe{border-right:dotted 3px #365a9e;width:371px;height:230px;float:left;text-align:center;}
 #callToAction .volunteer{float:left;text-align:center;width:371px;height:230px;}
 #callToAction a{display:inline-block;}#callToAction a>img{display:block;}
-#fanpage{font-family:"Abel",Helvetica,Arial,sans-serif;text-align:center;font-size:24px;letter-spacing:-1px;}#fanpage p{line-height:1em;}
+#fanpage{font-family:"Abel",Helvetica,Arial,sans-serif;text-align:center;font-size:24px;letter-spacing:-1px;}#fanpage p{line-height:1em;margin:0.5em 0;}
 #poderDoSueCurtirLG{width:295px;margin:30px auto 0;display:block;}
 hr{margin:0;border:none;border-top:solid 2px #3372b6;margin-bottom:.4em;}hr.por{display:inline-block;margin:0;border:none;border-top:solid 2px #3372b6;margin-bottom:.7em;}hr.por.part{width:265px;}
 hr.bot{width:608px;margin:auto;border-width:3px;}
@@ -113,7 +114,7 @@ hr.bot{width:608px;margin:auto;border-width:3px;}
 .icon-msf{position:absolute;bottom:10px;right:10px;}
 .formWrapper{float:left;margin-left:30px;width:460px;text-align:left;font-family:"Abel",Helvetica,Arial,sans-serif;}.formWrapper h2{font-family:"Abel",Helvetica,Arial,sans-serif;font-size:25px;margin:0;}
 #callToAction .inscreva-se{font:11px Tahoma,'Geneva',sans-serif;width:225px;float:left;margin-left:15px;}#callToAction .inscreva-se h2{letter-spacing:-1px;color:#474747;font-size:28px;float:left;margin:0;padding:0;padding-top:2px;padding-bottom:3px;text-transform:uppercase;}
-#callToAction .inscreva-se #ddlEstado{width:53px;opacity:0;filter:alpha(opacity = 0);margin-left:-10px;}
+#callToAction .inscreva-se #Newsletter_uf{width:53px;opacity:0;filter:alpha(opacity = 0);margin-left:-10px;}
 #callToAction .inscreva-se span.campo{float:left;display:block;margin-bottom:3px;}
 #callToAction .inscreva-se span.gg{background:url('../images/bg-input-gg-news.png') no-repeat;width:225px;height:23px;}
 #callToAction .inscreva-se .bgselect{background-image:url("../images/sprite.png");background-repeat:no-repeat;background-position:-483px -130px;height:26px !important;line-height:26px;}
@@ -124,7 +125,7 @@ hr.bot{width:608px;margin:auto;border-width:3px;}
 #callToAction .inscreva-se #lblUf{position:absolute;margin-left:2px;width:20px;}
 #callToAction .inscreva-se table{border-collapse:collapse;border-spacing:0;}
 #callToAction .inscreva-se #rbtDoou tr td{width:58px !important;}
-#callToAction .inscreva-se input#rbtDoou_0,#callToAction .inscreva-se input#rbtDoou_1{float:left;width:20px;}
+#callToAction .inscreva-se input#Newsletter_jahFezDoacoes01,#callToAction .inscreva-se input#Newsletter_jahFezDoacoes02{float:left;width:20px;}
 #callToAction .inscreva-se input.bot-enviar{width:95px;height:34px;float:right;padding:0px;}
 #callToAction .compartilhe{float:left;background-image:url("../images/ui-button-poderCurtir-you.png");height:110px;width:110px;}#callToAction .compartilhe.other{background-image:url("../images/ui-button-poderCurtir-other.png");}
 #callToAction .discover{float:left;background-image:url("../images/ui-button-convideAmigos-you.png");height:110px;width:110px;}#callToAction .discover.other{background-image:url("../images/ui-button-convideAmigos-other.png");}

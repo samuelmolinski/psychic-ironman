@@ -69,16 +69,15 @@ return array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),*/
 		// uncomment the following to use a MySQL database
-		/*
+		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=mysql02.experienciasdevida2.hospedagemdesites.ws;dbname=experienciasde',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => 'experienciasde',
+			'password' => 'msf@321',
 			'charset' => 'utf8',
 		),
-		*/
-		'errorHandler'=>array(
+		/*'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
         ),
@@ -96,7 +95,7 @@ return array(
 				),
 				*/
 			),
-		),
+		),*/
 	),
 
 	// application-level parameters that can be accessed

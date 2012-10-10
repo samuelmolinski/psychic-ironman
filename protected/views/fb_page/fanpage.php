@@ -7,6 +7,7 @@
 	$friend1 = Yii::app()->facebook->api($id1);
 	$friend2 = Yii::app()->facebook->api($id2);
 	$p = new sfFacebookPhoto;
+	$states = array( 0=>'UF','AC'=>'AC','AL'=>'AL','AM'=>'AM','AP'=>'AP','BA'=>'BA','CE'=>'CE','DF'=>'DF','ES'=>'ES','GO'=>'GO','MA'=>'MA','MG'=>'MG','MS'=>'MS','MT'=>'MT','PA'=>'PA','PB'=>'PB','PI'=>'PI','PR'=>'PR','RJ'=>'RJ','RN'=>'RN','RO'=>'RO','RR'=>'RR','RS'=>'RS','SC'=>'SC','SE'=>'SE','SP'=>'SP','TO'=>'TO');
 
 	$user['photo'] = $p->getRealUrl("http://graph.facebook.com/$userId/picture?type=large");
 	$friend0['photo'] = $p->getRealUrl("http://graph.facebook.com/$id0/picture?type=large");
@@ -24,6 +25,8 @@
 	} else {
 		$visitor = true;
 	}
+
+	d($_POST);
 	d($shareLink)
 ?>
 <div id='fanpage'>
@@ -69,7 +72,7 @@
 			<h2>É você atuando com a gente. É você como um verdadeiro Amigo Sem Fronteiras.</h2>
 			<p style="font-size: 20px;">Agora, seja um Voluntário Virtual, receba nossos materiais<br />e ajude a espalhar ainda mais a nossa causa.</p>
 			<div class="buttons">				
-				<?php d($visitor); if($visitor) { ?>				
+				<?php if($visitor) { ?>				
 				<div class="compartilhe other btn"></div>
 				<div class="discover other btn"></div>
 				<?php } else { ?>
@@ -77,55 +80,33 @@
 				<div class="discover btn"></div>
 				<?php } ?>
 			</div>
-			<div class="inscreva-se">                    
-                <span class="campo gg">
-                    <input name="txtNome" type="text" value="Nome completo" id="txtNome" class="g" onfocus="limpaInputs(this,'Nome completo')" onblur="voltaInputs(this,'Nome completo')">
+			<div class="inscreva-se"> 
+
+				<?php
+					$form = $this -> beginWidget('CActiveForm', array(
+						'id' => 'Newsletter-form',
+						'enableAjaxValidation' => false,
+					));
+				?>      
+
+                <span class="campo gg">      
+					<?php echo $form->textField($model, 'nome', array('value'=>'Nome completo', 'class'=>'g', 'onfocus' => 'limpaInputs(this,\'Nome completo\')', 'onblur' => 'voltaInputs(this,\'Nome completo\')')); ?>
                 </span>
 
-                <span class="campo gg">
-                    <input name="txtEmail" type="text" value="E-mail" id="txtEmail" class="g" onfocus="limpaInputs(this,'E-mail')" onblur="voltaInputs(this,'E-mail')">
+                <span class="campo gg">      
+					<?php echo $form->textField($model, 'email', array('value'=>'E-mail', 'class'=>'g', 'onfocus' => 'limpaInputs(this,\'E-mail\')', 'onblur' => 'voltaInputs(this,\'E-mail\')')); ?>
                 </span>
 
-                <span class="campo gg">
-                    <input name="ddlCidade" type="text" value="Cidade" id="uniform-ddlCidade" class="g" onfocus="limpaInputs(this,'Cidade')" onblur="voltaInputs(this,'Cidade')">
+                <span class="campo gg">      
+					<?php echo $form->textField($model, 'cidade', array('value'=>'Cidade', 'class'=>'g', 'onfocus' => 'limpaInputs(this,\'Cidade\')', 'onblur' => 'voltaInputs(this,\'Cidade\')')); ?>
                 </span>
                 <div id="UpdatePanel1">	
                     <span class="clearfix" style="margin-left: 6px;">
                         <span class="campo select bgselect">
                             <span class="bgselectright" style="width: 45px;">
                                 <span id="lblUf">UF</span>
-                                <!-- <div class="selector" id="uniform-ddlEstado"><span>UF</span> -->
-                                	<select name="ddlEstado" onchange="javascript:setTimeout('__doPostBack(\'ddlEstado\',\'\')', 0)" id="ddlEstado" style="opacity: 0; ">
-										<option selected="selected" value="0">UF</option>
-										<option value="AC">AC</option>
-										<option value="AL">AL</option>
-										<option value="AM">AM</option>
-										<option value="AP">AP</option>
-										<option value="BA">BA</option>
-										<option value="CE">CE</option>
-										<option value="DF">DF</option>
-										<option value="ES">ES</option>
-										<option value="GO">GO</option>
-										<option value="MA">MA</option>
-										<option value="MG">MG</option>
-										<option value="MS">MS</option>
-										<option value="MT">MT</option>
-										<option value="PA">PA</option>
-										<option value="PB">PB</option>
-										<option value="PE">PE</option>
-										<option value="PI">PI</option>
-										<option value="PR">PR</option>
-										<option value="RJ">RJ</option>
-										<option value="RN">RN</option>
-										<option value="RO">RO</option>
-										<option value="RR">RR</option>
-										<option value="RS">RS</option>
-										<option value="SC">SC</option>
-										<option value="SE">SE</option>
-										<option value="SP">SP</option>
-										<option value="TO">TO</option>
-									</select>
-								<!-- </div> -->
+                                <?php echo $form->dropDownList($model, 'uf', $states, array('value'=>'Cidade', 'class'=>'g')); ?>
+                                
 					        </span>
                         </span>
                     </span>							                        
@@ -137,12 +118,25 @@
                     <table id="rbtDoou" cellspacing="2" cellpadding="2" border="0">
 						<tbody>
 							<tr>
-								<td><span style="color: rgb(119, 119, 119);"><input id="rbtDoou_0" type="radio" name="rbtDoou" value="1"><label for="rbtDoou_0">Sim</label></span></td><td><span style="color: rgb(119, 119, 119);"><input id="rbtDoou_1" type="radio" name="rbtDoou" value="0" checked="checked"><label for="rbtDoou_1">Não</label></span></td>
+								<td><span style="color: rgb(119, 119, 119);">
+									<?php echo $form->radioButton($model, 'jahFezDoacoes', array('value'=>'1', 'id'=>'Newsletter_jahFezDoacoes01')); ?>
+									<label for="rbtDoou_0">Sim</label></span>
+								</td>
+								<td>
+									<span style="color: rgb(119, 119, 119);">
+										<?php echo $form->radioButton($model, 'jahFezDoacoes', array('value'=>'0', 'id'=>'Newsletter_jahFezDoacoes02')); ?>
+										<label for="rbtDoou_1">Não</label>
+									</span>
+								</td>
 							</tr>
 						</tbody>
 					</table>
                 </span>
-                <input type="image" name="btnGravarUsuario" id="btnGravarUsuario" class="bot-enviar" src="http://www.msf.org.br/imagens/botoes/bot-enviar-news.gif" onclick="return validaNewsLetterHome();" style="border-width:0px;">
+                <?php
+					echo CHtml::submitButton('', array('id'=>'btnGravarUsuario', 'class'=>'bot-enviar', 'src'=>'http://www.msf.org.br/imagens/botoes/bot-enviar-news.gif', 'name'=>"btnGravarUsuario", 'style'=>"border-width:0px;"));
+				?>
+                <!-- <input type="image" name="btnGravarUsuario" id="btnGravarUsuario" class="bot-enviar" src="http://www.msf.org.br/imagens/botoes/bot-enviar-news.gif" onclick="return validaNewsLetterHome();" style="border-width:0px;"> -->
+                <?php $this -> endWidget(); ?>
             </div>
 		</div>
 	</div>

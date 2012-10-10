@@ -9,6 +9,9 @@
 		public function actionIndex() {
 			$redirect = $this -> pageRedirect();
 			$user = Yii::app()->facebook->getUser();
+			$model = new Newsletter;
+			$model -> setScenario('Newsletter');
+			$formStatus = 0;
 
 			if(!$redirect) {
 				$appData = @$this->getAppData();
@@ -27,11 +30,11 @@
 				// redirect to fanpage if has the approprate appdata
 				if($appData && $appData->userId && $appData->id0 && $appData->id1 && $appData->id2) {
 					//$this -> render('fanpage', $appData);
-					$url = Yii::app()->createUrl('fb_page/fanpage',array( 'app_data' => json_encode($app_data)));
+					$url = Yii::app()->createUrl('fb_page/fanpage',array('app_data' => json_encode($app_data)));
 					$this->redirect($url);
 					//$this -> redirect('fanpage');
 				} else {
-					$this -> render('index', array('fbConnectLink' => $fbConnectLink));
+					$this -> render('index', array('success'=>$formStatus, 'model'=>$model, 'fbConnectLink' => $fbConnectLink));
 				}
 			}
 		}
@@ -41,15 +44,36 @@
 		}		
 		
 		public function actionFanpage() {
+
+			$model = new Newsletter;
+			$model -> setScenario('Newsletter');
+			$formStatus = 0;
 			//$auth = $this->authenticate();
 			//$userinfo = Yii::app()->facebook->getInfo();
+
+			if (isset($_POST['Newsletter'])) {
+
+				$model->attributes=$_POST['Newsletter'];
+				$r = $model -> save();
+				//d($r);
+				if ($r) {
+					//d($model->id);
+					//d($_POST['Frase']);
+					//d($model->attributes);
+
+					$formStatus = 1;
+				} else {
+					$formStatus = -1;
+				}
+			}
+
 			$user = Yii::app()->facebook->getUser();
 			//d($user);
 			$appData = @$this->getAppData();
 			//d($appData);		
 			//if we have fb appdata lets us it to render the page			
 			if($appData && $appData->userID && $appData->id0 && $appData->id1 && $appData->id2 && $appData->id3){
-				$this -> render('fanpage', array('userId'=>$appData->userID, 'id0'=>$appData->id0, 'id1'=>$appData->id1, 'id2'=>$appData->id2));
+				$this -> render('fanpage', array('model'=>$model, 'userId'=>$appData->userID, 'id0'=>$appData->id0, 'id1'=>$appData->id1, 'id2'=>$appData->id2));
 			}
 			if($user){
 				//time to generate ids of 'friends'					
@@ -98,7 +122,7 @@
 				//d($arr);
 				$shareLink = $this->generateFanpageLink($arr);
 				//d($shareLink);
-				$this -> render('fanpage', array('userId'=>$user, 'id0'=>$commenters[0], 'id1'=>$commenters[1], 'id2'=>$commenters[2], 'shareLink'=> $shareLink));
+				$this -> render('fanpage', array('model'=>$model, 'userId'=>$user, 'id0'=>$commenters[0], 'id1'=>$commenters[1], 'id2'=>$commenters[2], 'shareLink'=> $shareLink));
 			
 			} else {
 				//$this -> render('fanpage');
