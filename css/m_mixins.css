@@ -12,8 +12,8 @@ span.amp{font-family:Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif
 .text-left{text-align:left;}
 .text-center{text-align:center;}
 .text-right{text-align:right;}
-.help,.info,.error,.success{margin:10px;padding:5px 18px;border:1px solid;}
+.help,.info,.success{margin:10px;padding:5px 18px;border:1px solid;}
 .help{border-color:#e8dc59;background:#ebe16f;}
 .info{border-color:#bfe4f4;background:#d5edf8;}
-.error{border-color:#f8cdce;background:#fbe3e4;}
+.error{border-color:#e83d44 !important;background:#eb545a !important;border-radius:4px;color:#eee !important;}
 .success{border-color:#deeaae;background:#e6efc2;}

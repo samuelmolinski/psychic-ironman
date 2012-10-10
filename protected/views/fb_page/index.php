@@ -1,3 +1,4 @@
+<?php d($loginUrl); ?>
 <div id="logoVideo" class="clearfix">
 	<div class="cutir">
 		<img class="msf-logo" src="<?php echo Yii::app()-> params['root']; ?>/images/logo-mediocsSemFronteiras.png">

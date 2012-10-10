@@ -16,17 +16,92 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->params['root']; ?>/css/form.css" />
 	<!-- scripts -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<script src="<?php echo Yii::app()->params['root']; ?>/js/validate.js" type="text/javascript"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	<script type="text/javascript">
-		var FacebookURL = '<?php echo Fb_pageController::genRedirect($this->getAction()->getId()); ?>';
+		//var FacebookURL = '<?php echo Fb_pageController::genRedirect($this->getAction()->getId()); ?>';
+		var FacebookURL = '<?php echo Fb_pageController::genRedirect("fanpage"); ?>';
 		if (self.location == top.location) {
-			setTimeout(top.location.href = FacebookURL, 200);
+			//setTimeout(top.location.href = FacebookURL, 200);
 		} 
 	</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		// validate signup form on keyup and submit
+		//$("#Newsletter-form").validate();
+		$("#Newsletter_uf").change(function(){
+			$('#lblUf').html($('#Newsletter_uf').val());
+			$('#lblUf').removeClass('error');
+		});
+		$('#Newsletter_nome, #Newsletter_cidade, #Newsletter_uf, #Newsletter_email, #Newsletter_jahFezDoacoes01, #Newsletter_jahFezDoacoes02, #lblUf').click(function() {
+			$(this).removeClass('error');
+			if($(this) == $('#Newsletter_uf')) {
+				$('#lblUf').removeClass('error');
+			}
+		});
+		$("#Newsletter-form").submit(function() {
+			if(!($('#Newsletter_jahFezDoacoes01').is(':checked') == '')||($('#Newsletter_jahFezDoacoes02').is(':checked') == '')){
+				$('#Newsletter_jahFezDoacoes01, #Newsletter_jahFezDoacoes02').addClass('error');
+		  		return false;
+			} 
+			var nome = $('#Newsletter_nome').val();
+			var email = $('#Newsletter_email').val();
+			var cidade = $('#Newsletter_cidade').val();
+			var uf = $('#Newsletter_uf').val();
+
+			if ((nome == '')||(email == '')||(cidade == '')||(uf == '')||(nome == 'Nome completo')||(email == 'E-mail')||(cidade == 'Cidade')||(uf == '0')) {
+				
+				if ((nome == '')||(nome == 'Nome completo')) {
+					$('#Newsletter_nome').addClass('error');
+				}
+				if((cidade == '')||(cidade == 'Cidade')){
+					$('#Newsletter_cidade').addClass('error');
+				}
+				if((uf == '')||(uf == '0')){
+					$('#Newsletter_uf, #lblUf').addClass('error');
+				}
+				if((email == '')||(email == 'E-mail')){
+					$('#Newsletter_email').addClass('error');
+				}
+				alert("Failed!");				
+		  		return false;
+			} 
+		  	return false;
+			alert("pass!");
+		});
+		alert("setup!");
+	});
+	</script>
+
+	<script type="text/javascript"> 
+        function newInvite(){
+             var receiverUserIds = FB.ui({ 
+                    method : 'apprequests',
+                    message: 'Que amigos você deseja convidar para o aplicativo do MSF?',
+             },
+             function(receiverUserIds) {
+                      console.log("IDS : " + receiverUserIds.request_ids);
+                    }
+             );   
+        }
+    </script> 
 </head>
 
-<body>
+<body>	
+<script src="http://connect.facebook.net/pt_BR/all.js"></script>
+<script>
+FB.init({
+ appId  : '402784116453669',
+ status : false, // check login status
+ cookie : true, // enable cookies to allow the server to access the session
+ xfbml  : true// parse XFBML
+ });
+
+ //FB.Canvas.setSize({ height: 3400px });
+ FB.Canvas.setAutoResize(7);
+
+ </script>
 
 <div class="container clearfix" id="page">
 

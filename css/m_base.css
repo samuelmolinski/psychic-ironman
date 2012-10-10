@@ -60,10 +60,10 @@ span.amp{font-family:Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif
 .text-left{text-align:left;}
 .text-center{text-align:center;}
 .text-right{text-align:right;}
-.help,.info,.error,.success{margin:10px;padding:5px 18px;border:1px solid;}
+.help,.info,.success{margin:10px;padding:5px 18px;border:1px solid;}
 .help{border-color:#e8dc59;background:#ebe16f;}
 .info{border-color:#bfe4f4;background:#d5edf8;}
-.error{border-color:#f8cdce;background:#fbe3e4;}
+.error{border-color:#e83d44 !important;background:#eb545a !important;border-radius:4px;color:#eee !important;}
 .success{border-color:#deeaae;background:#e6efc2;}
 body{background-image:url(../images/bg-base.jpg);background-repeat:repeat;font-family:Arial, serif;font-size:14px;line-height:1.5;color:#000000;min-width:810px;width:100%;border-top:solid 12px #eb2a3e;}
 .wrap{width:100%;margin:0 auto;}
@@ -114,19 +114,19 @@ hr.bot{width:608px;margin:auto;border-width:3px;}
 .icon-msf{position:absolute;bottom:10px;right:10px;}
 .formWrapper{float:left;margin-left:30px;width:460px;text-align:left;font-family:"Abel",Helvetica,Arial,sans-serif;}.formWrapper h2{font-family:"Abel",Helvetica,Arial,sans-serif;font-size:25px;margin:0;}
 #callToAction .inscreva-se{font:11px Tahoma,'Geneva',sans-serif;width:225px;float:left;margin-left:15px;}#callToAction .inscreva-se h2{letter-spacing:-1px;color:#474747;font-size:28px;float:left;margin:0;padding:0;padding-top:2px;padding-bottom:3px;text-transform:uppercase;}
-#callToAction .inscreva-se #Newsletter_uf{width:53px;opacity:0;filter:alpha(opacity = 0);margin-left:-10px;}
+#callToAction .inscreva-se #Newsletter_uf{width:53px;opacity:0;height:23px;filter:alpha(opacity = 0);margin-left:-10px;}
 #callToAction .inscreva-se span.campo{float:left;display:block;margin-bottom:3px;}
 #callToAction .inscreva-se span.gg{background:url('../images/bg-input-gg-news.png') no-repeat;width:225px;height:23px;}
 #callToAction .inscreva-se .bgselect{background-image:url("../images/sprite.png");background-repeat:no-repeat;background-position:-483px -130px;height:26px !important;line-height:26px;}
 #callToAction .inscreva-se .bgselecft{background-image:url("../images/sprite.png");background-repeat:no-repeat;background-position:-483px -130px;height:26px !important;line-height:26px;}
 #callToAction .inscreva-se .bgselectright{background-image:url("../images/sprite.png");background-repeat:no-repeat;background-position:right 0;height:26px;line-height:26px;display:block;float:left;width:217px;margin-left:10px;}
-#callToAction .inscreva-se input{background:transparent;font:11px Tahoma,"Geneva",sans-serif;color:#777;padding:5px;width:95%;border:none;}
+#callToAction .inscreva-se input{background:transparent;font:11px Tahoma,"Geneva",sans-serif;color:#777;padding:5px;width:96%;border:none;}
 #callToAction .inscreva-se #lblUf,#callToAction .inscreva-se #lblCidade{color:#666666;text-shadow:0 1px 0 #FFFFFF;display:inline-block;width:218px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;position:absolute;}
-#callToAction .inscreva-se #lblUf{position:absolute;margin-left:2px;width:20px;}
+#callToAction .inscreva-se #lblUf{position:absolute;margin-left:-7px;width:30px;text-align:center;margin-top:2px;line-height:1.9em;}
 #callToAction .inscreva-se table{border-collapse:collapse;border-spacing:0;}
 #callToAction .inscreva-se #rbtDoou tr td{width:58px !important;}
 #callToAction .inscreva-se input#Newsletter_jahFezDoacoes01,#callToAction .inscreva-se input#Newsletter_jahFezDoacoes02{float:left;width:20px;}
-#callToAction .inscreva-se input.bot-enviar{width:95px;height:34px;float:right;padding:0px;}
+#callToAction .inscreva-se input#btnGravarUsuario{background-image:url("../images/ui-button-enviar.png");background-position:top;width:95px;height:34px;float:right;padding:0px;border-width:0px;}#callToAction .inscreva-se input#btnGravarUsuario:hovver{background-position:bottom;}
 #callToAction .compartilhe{float:left;background-image:url("../images/ui-button-poderCurtir-you.png");height:110px;width:110px;}#callToAction .compartilhe.other{background-image:url("../images/ui-button-poderCurtir-other.png");}
 #callToAction .discover{float:left;background-image:url("../images/ui-button-convideAmigos-you.png");height:110px;width:110px;}#callToAction .discover.other{background-image:url("../images/ui-button-convideAmigos-other.png");}
 .page-navigation,.wp-prev-next{margin:1.1em 0 2.2em;}

@@ -1,6 +1,6 @@
 <?php 
 
-	$auth = $this->authenticate();
+	//$auth = $this->authenticate();
 	$me = Yii::app()->facebook->api('/me');
 	$user = Yii::app()->facebook->api($userId);
 	$friend0 = Yii::app()->facebook->api($id0);
@@ -26,8 +26,7 @@
 		$visitor = true;
 	}
 
-	d($_POST);
-	d($shareLink)
+	d($shareLink);
 ?>
 <div id='fanpage'>
 	<img id="poderDoSueCurtirLG" src="<?php echo Yii::app()->params['root']; ?>/images/logo-poderDoSeuCurtir.png"/>
@@ -73,11 +72,11 @@
 			<p style="font-size: 20px;">Agora, seja um Voluntário Virtual, receba nossos materiais<br />e ajude a espalhar ainda mais a nossa causa.</p>
 			<div class="buttons">				
 				<?php if($visitor) { ?>				
-				<div class="compartilhe other btn"></div>
-				<div class="discover other btn"></div>
+				<a href="#" onClick="newInvite(); return false;"><div class="compartilhe other btn"></div></a>
+				<a href="#" onClick="newInvite(); return false;"><div class="discover other btn"></div></a>
 				<?php } else { ?>
-				<div class="compartilhe btn"></div>
-				<div class="discover btn"></div>
+				<a href="#" onClick="newInvite(); return false;"><div class="compartilhe btn"></div></a>
+				<a href="#" onClick="newInvite(); return false;"><div class="discover btn"></div></a>
 				<?php } ?>
 			</div>
 			<div class="inscreva-se"> 
@@ -87,25 +86,25 @@
 						'id' => 'Newsletter-form',
 						'enableAjaxValidation' => false,
 					));
-				?>      
+				?>
 
                 <span class="campo gg">      
-					<?php echo $form->textField($model, 'nome', array('value'=>'Nome completo', 'class'=>'g', 'onfocus' => 'limpaInputs(this,\'Nome completo\')', 'onblur' => 'voltaInputs(this,\'Nome completo\')')); ?>
+					<?php echo $form->textField($model, 'nome', array('value'=>'Nome completo', 'class'=>'g required', 'onfocus' => 'limpaInputs(this,\'Nome completo\')', 'onblur' => 'voltaInputs(this,\'Nome completo\')')); ?>
                 </span>
 
                 <span class="campo gg">      
-					<?php echo $form->textField($model, 'email', array('value'=>'E-mail', 'class'=>'g', 'onfocus' => 'limpaInputs(this,\'E-mail\')', 'onblur' => 'voltaInputs(this,\'E-mail\')')); ?>
+					<?php echo $form->textField($model, 'email', array('value'=>'E-mail', 'class'=>'g required', 'onfocus' => 'limpaInputs(this,\'E-mail\')', 'onblur' => 'voltaInputs(this,\'E-mail\')')); ?>
                 </span>
 
                 <span class="campo gg">      
-					<?php echo $form->textField($model, 'cidade', array('value'=>'Cidade', 'class'=>'g', 'onfocus' => 'limpaInputs(this,\'Cidade\')', 'onblur' => 'voltaInputs(this,\'Cidade\')')); ?>
+					<?php echo $form->textField($model, 'cidade', array('value'=>'Cidade', 'class'=>'g required', 'onfocus' => 'limpaInputs(this,\'Cidade\')', 'onblur' => 'voltaInputs(this,\'Cidade\')')); ?>
                 </span>
                 <div id="UpdatePanel1">	
                     <span class="clearfix" style="margin-left: 6px;">
                         <span class="campo select bgselect">
                             <span class="bgselectright" style="width: 45px;">
                                 <span id="lblUf">UF</span>
-                                <?php echo $form->dropDownList($model, 'uf', $states, array('value'=>'Cidade', 'class'=>'g')); ?>
+                                <?php echo $form->dropDownList($model, 'uf', $states, array('value'=>'uf', 'class'=>'g required')); ?>
                                 
 					        </span>
                         </span>
@@ -119,12 +118,12 @@
 						<tbody>
 							<tr>
 								<td><span style="color: rgb(119, 119, 119);">
-									<?php echo $form->radioButton($model, 'jahFezDoacoes', array('value'=>'1', 'id'=>'Newsletter_jahFezDoacoes01')); ?>
+									<?php echo $form->radioButton($model, 'jahFezDoacoes', array('value'=>'1', 'id'=>'Newsletter_jahFezDoacoes01', 'class'=>'required')); ?>
 									<label for="rbtDoou_0">Sim</label></span>
 								</td>
 								<td>
 									<span style="color: rgb(119, 119, 119);">
-										<?php echo $form->radioButton($model, 'jahFezDoacoes', array('value'=>'0', 'id'=>'Newsletter_jahFezDoacoes02')); ?>
+										<?php echo $form->radioButton($model, 'jahFezDoacoes', array('value'=>'0', 'id'=>'Newsletter_jahFezDoacoes02', 'class'=>'required')); ?>
 										<label for="rbtDoou_1">Não</label>
 									</span>
 								</td>
@@ -133,7 +132,7 @@
 					</table>
                 </span>
                 <?php
-					echo CHtml::submitButton('', array('id'=>'btnGravarUsuario', 'class'=>'bot-enviar', 'src'=>'http://www.msf.org.br/imagens/botoes/bot-enviar-news.gif', 'name'=>"btnGravarUsuario", 'style'=>"border-width:0px;"));
+					echo CHtml::submitButton('', array('id'=>'btnGravarUsuario', 'class'=>'bot-enviar btn', 'name'=>"btnGravarUsuario"));
 				?>
                 <!-- <input type="image" name="btnGravarUsuario" id="btnGravarUsuario" class="bot-enviar" src="http://www.msf.org.br/imagens/botoes/bot-enviar-news.gif" onclick="return validaNewsLetterHome();" style="border-width:0px;"> -->
                 <?php $this -> endWidget(); ?>

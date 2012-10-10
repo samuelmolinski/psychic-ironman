@@ -7,19 +7,22 @@
 		//public $fbURL = 'https://www.facebook.com/pages/SamplePage/220134694676331?sk=app_402784116453669';
 
 		public function actionIndex() {
+			d($session);
 			$redirect = $this -> pageRedirect();
-			$user = Yii::app()->facebook->getUser();
+
+			//$auth = $this->authenticate();
 			$model = new Newsletter;
 			$model -> setScenario('Newsletter');
 			$formStatus = 0;
 
-			if(!$redirect) {
-				$appData = @$this->getAppData();
-				//redirect for our static pages	
-				if (!$auth = Yii::app()->facebook->getUser())
-					$auth = $this -> authenticate();
-				//if authorized go to the fanpage else require authorization
-				if(@$auth) {				
+			$appData = @$this->getAppData();
+			d($appData);
+			// redirect to fanpage if it has the approprate appdata
+			if($appData && $appData->userId && $appData->id0 && $appData->id1 && $appData->id2) {
+				$url = Yii::app()->createUrl('fb_page/fanpage',array('app_data' => json_encode($appData)));
+				$this->redirect($url);
+			} else {
+				if($auth) {				
 					$fbConnectLink = "<a href='".CHtml::normalizeUrl(array('fb_page/fanpage'))."' class='btn connectFacebook'></a>";
 				} else {
 					$loginUrl = $this->getFbLoginURL('fanpage');
@@ -27,15 +30,7 @@
 					$fbConnectLink = "<a href='#' onclick='setTimeout(function() {top.location.href = \"$loginUrl\"}, 500);' class='btn connectFacebook'></a>";
 					//$fbConnectLink = "<a href='#' target='_top class='btn connectFacebook'></a>";
 				}
-				// redirect to fanpage if has the approprate appdata
-				if($appData && $appData->userId && $appData->id0 && $appData->id1 && $appData->id2) {
-					//$this -> render('fanpage', $appData);
-					$url = Yii::app()->createUrl('fb_page/fanpage',array('app_data' => json_encode($app_data)));
-					$this->redirect($url);
-					//$this -> redirect('fanpage');
-				} else {
-					$this -> render('index', array('success'=>$formStatus, 'model'=>$model, 'fbConnectLink' => $fbConnectLink));
-				}
+				$this -> render('index', array('success'=>$formStatus, 'model'=>$model, 'fbConnectLink' => $fbConnectLink, 'loginUrl'=>$loginUrl));
 			}
 		}
 
@@ -44,11 +39,10 @@
 		}		
 		
 		public function actionFanpage() {
-
 			$model = new Newsletter;
 			$model -> setScenario('Newsletter');
 			$formStatus = 0;
-			//$auth = $this->authenticate();
+			$auth = $this->authenticate();
 			//$userinfo = Yii::app()->facebook->getInfo();
 
 			if (isset($_POST['Newsletter'])) {
@@ -70,12 +64,12 @@
 			$user = Yii::app()->facebook->getUser();
 			//d($user);
 			$appData = @$this->getAppData();
-			//d($appData);		
-			//if we have fb appdata lets us it to render the page			
-			if($appData && $appData->userID && $appData->id0 && $appData->id1 && $appData->id2 && $appData->id3){
-				$this -> render('fanpage', array('model'=>$model, 'userId'=>$appData->userID, 'id0'=>$appData->id0, 'id1'=>$appData->id1, 'id2'=>$appData->id2));
-			}
-			if($user){
+			//if we have fb appdata lets us it to render the page
+			if($appData && $appData->userId && $appData->id0 && $appData->id1 && $appData->id2){
+				$arr = array('userId'=>$appData->userId, 'id0'=>$appData->id0, 'id1'=>$appData->id1, 'id2'=>$appData->id2);
+				$shareLink = $this->generateFanpageLink($arr);
+				$this -> render('fanpage', array('model'=>$model, 'userId'=>$appData->userId, 'id0'=>$appData->id0, 'id1'=>$appData->id1, 'id2'=>$appData->id2, 'shareLink'=> $shareLink));
+			} elseif($user){
 				//time to generate ids of 'friends'					
 				$timeUntil = time() - (3600 * 24 * 90);
 				$user_feed = Yii::app() -> facebook -> api("/me/feed?until=$timeUntil&metadata=1&limit=500");
@@ -85,9 +79,7 @@
 				$mostComments = array();
 				$commenters = array();
 				foreach ($user_feed['data'] as $k => $post) {
-					//d($post['comments']['count']);
 					if (($post['comments']['count'] != 0)&&($post['comments']['data'])) {
-					//d($post);
 						foreach($post['comments']['data'] as $j=> $comment){
 							if($user!=$comment['from']['id']){
 								if(!key_exists($comment['from']['id'], $mostComments)) {
@@ -103,7 +95,6 @@
 					arsort($mostComments);						
 				} else {
 					$needed = 4-count($mostComments);
-					//$needed = 1;
 					$friendsNeed = array_rand($user_friends['data'], $needed);
 					if(is_numeric($friendsNeed)) {
 						$mostComments[$user_friends['data'][$friendsNeed]['id']] = 1;
@@ -117,11 +108,8 @@
 				foreach($mostComments as $k =>$v){
 					$commenters[] = $k;
 				}
-				//d($mostComments);
 				$arr = array('userId'=>$user, 'id0'=>$commenters[0], 'id1'=>$commenters[1], 'id2'=>$commenters[2]);
-				//d($arr);
 				$shareLink = $this->generateFanpageLink($arr);
-				//d($shareLink);
 				$this -> render('fanpage', array('model'=>$model, 'userId'=>$user, 'id0'=>$commenters[0], 'id1'=>$commenters[1], 'id2'=>$commenters[2], 'shareLink'=> $shareLink));
 			
 			} else {
@@ -148,10 +136,11 @@
 
 		public function getFbLoginURL($redirect = Null) {
 			if ($redirect) {
-				$ad = '/fb_page/' . $redirect;
+				$ad = '/index.php/fb_page/' . $redirect;
 				$url = Yii::app()-> params['root'];
 				$redirect = $url . $ad;
-				return Yii::app() -> facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream', 'redirect_uri' => $redirect));
+				return Yii::app() -> facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream'));
+				//return Yii::app() -> facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream', 'redirect_uri' => $redirect));
 			} else {
 				return Yii::app() -> facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream'));
 			}
@@ -176,8 +165,12 @@
 
 		public function getAppData() {
 			if(!$this->fbAappData){
-				$signed_request = Yii::app() -> facebook -> getSignedRequest();
-				$app_data = $signed_request["app_data"];
+				if(isset($_GET['app_data'])){
+					$app_data = $_GET["app_data"];
+				} else {					
+					$signed_request = Yii::app()->facebook ->getSignedRequest();
+					$app_data = $signed_request["app_data"];
+				}
 				$app_data = json_decode($app_data);
 				return $app_data;
 			} else {
@@ -202,14 +195,17 @@
 		}
 
 		public function generateFanpageLink($app_data) {
+			//d($app_data);
 			$app_data = urlencode(json_encode($app_data));
 			$app_data = 'app_data=' . $app_data;
+			//d($app_data);
 			$p = strpos($this->fbURL, '?');
 			if (FALSE === $p) {
 				$fbURL = $this->fbURL . '?' . $app_data;
 			} else {
 				$fbURL = $this->fbURL . '&' . $app_data;
 			}
+			//d($fbURL);
 			return $fbURL;
 		}
 

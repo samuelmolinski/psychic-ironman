@@ -53,7 +53,7 @@ COLORS
 *********************/
 
 @yellow:            #ebe16f;
-@red:               #fbe3e4;
+@red:               #eb545a;
 @green:             #e6efc2;
 @blue:              #d5edf8;
 
@@ -178,7 +178,7 @@ span.amp {
 ALERTS & NOTICES
 *********************/
 
-.help, .info, .error, .success { 
+.help, .info, .success { 
 	margin: 10px; 
 	padding: 5px 18px; 
 	border: 1px solid; 
@@ -195,8 +195,10 @@ ALERTS & NOTICES
 }
 
 .error { 
-	border-color: darken(@red, 5%); 
-	background: @red; 
+	border-color: darken(@red, 5%) !important; 
+	background: @red !important;
+	border-radius: 4px;
+	color: #eee !important;
 }
 
 .success { 

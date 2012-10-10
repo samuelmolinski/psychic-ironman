@@ -565,6 +565,7 @@ hr {
 		#Newsletter_uf {
 			width: 53px;
 			opacity: 0;
+			height: 23px;
 			filter: ~"alpha(opacity = 0)";
 			margin-left: -10px;
 		}
@@ -608,7 +609,7 @@ hr {
 			font: 11px Tahoma, "Geneva", sans-serif;
 			color: #777;
 			padding: 5px;
-			width: 95%;
+			width: 96%;
 			border: none;
 		}
 		#lblUf, #lblCidade {
@@ -622,8 +623,11 @@ hr {
 		}
 		#lblUf {
 			position: absolute;
-			margin-left: 2px;
-			width: 20px;
+			margin-left: -7px;
+			width: 30px;
+			text-align: center;
+			margin-top: 2px;
+			line-height: 1.9em;
 		}
 		table {
 			border-collapse: collapse;
@@ -636,11 +640,17 @@ hr {
 			float: left;
 			width: 20px;
 		}
-		input.bot-enviar {
+		input#btnGravarUsuario {
+			background-image: url("@{imgPath}/ui-button-enviar.png");
+			background-position: top;
 			width: 95px;
 			height: 34px;
 			float: right;
 			padding: 0px;
+			border-width:0px;
+			&:hovver {
+				background-position: bottom;
+			}
 		}
 	}
 
