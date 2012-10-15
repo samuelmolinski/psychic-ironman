@@ -249,6 +249,8 @@
 	 * Get the real url for picture to use after
 	 */
 	public function getRealUrl($photoLink) {
+		curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, 0);
 	    curl_setopt($this->curl, CURLOPT_HTTPHEADER, $this->header);
 	    curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, false);
 	    curl_setopt($this->curl, CURLOPT_HEADER, false);
@@ -278,6 +280,8 @@
  * 
  */
   public function download($fileName) {
+		curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, 0);
       curl_setopt($this->curl, CURLOPT_HTTPHEADER, $this->header);
       curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($this->curl, CURLOPT_HEADER, false);

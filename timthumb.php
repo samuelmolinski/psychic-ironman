@@ -918,7 +918,6 @@ class timthumb {
 		//if using realpath, any symlinks will also be resolved
 		return preg_match('#^\.\./|/\.\./#', $path) ? realpath($path) : $path;
 	}
-	
 	protected function toDelete($name){
 		$this->debug(3, "Scheduling file $name to delete on destruct.");
 		$this->toDeletes[] = $name;

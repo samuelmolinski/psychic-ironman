@@ -11,6 +11,7 @@ defined('YII_DEBUG') or define('YII_DEBUG',true);
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 require_once('m_super_dump.php');
+require_once('m_socialMedia.php');
 require_once('m_uri.php');
 
 require_once($yii);

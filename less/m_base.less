@@ -39,6 +39,12 @@ body {
 	min-width:810px;
 	width: 100%;
 	border-top: solid 12px #eb2a3e;
+	overflow: hidden;
+	//height: 100%;
+}
+html {
+	overflow: hidden;
+	//height: 100%;
 }
 
 /*********************
@@ -473,6 +479,11 @@ hr {
 		display: inline-block;
 	}
 }
+.mac .curtirRibbon {
+	.improvedfriendCount {
+		padding-top: 10px;
+	}
+}
 #connections {
 	width: 100%;
 	min-height: 907px;
@@ -543,12 +554,26 @@ hr {
 	}
 }
 #callToAction{
+	overflow: hidden;
 
+	.volunteer {
+		cursor: pointer;
+		.inscreva-se {
+			font: 11px Tahoma, 'Geneva', sans-serif;
+			width: 225px;
+			margin: 0 45px;
+			height: 200px;
+			padding: 30px;
+			text-align: left;
+
+			#lblUf { display: none;}
+		}
+	}
 	.inscreva-se {
 		font: 11px Tahoma, 'Geneva', sans-serif;
 		width: 225px;
 		float: left;
-		margin-left: 15px;
+		margin-left: 10px;
 
 		h2 {
 
@@ -653,6 +678,9 @@ hr {
 			}
 		}
 	}
+	.buttons {
+		float:left;
+	}
 
 	.compartilhe {
 		float: left;
@@ -670,6 +698,51 @@ hr {
 		width: 110px;
 		&.other {
 			background-image:  url("@{imgPath}/ui-button-convideAmigos-other.png");
+		}
+	}
+}
+.msf-logo-espalhe {
+	margin: 30px auto 0;
+	width: 594px;
+	display: block;
+}
+.espalheIntro {
+	width:100%;
+
+	p {
+		text-align: center;
+		font-size: 21px;
+		color:#365a9e;
+		.abel;
+	}
+}
+#boards {
+	width: 775px;
+	margin-left: -12px;
+}
+.board {
+	float:left;
+	width: 387px;
+	height: 198px;
+
+	a, img {
+		display: block;
+	}
+
+	hr {
+		width: 100%;
+		border: none;
+		border-top: dotted 2px #6883b6;
+		margin: 1em 0;
+		display: inline-block;
+	}
+	&.share {
+		padding: 10px;
+		width: 367px;
+		height: 178px;
+
+		img {
+			float: left;
 		}
 	}
 }
