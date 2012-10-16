@@ -8,10 +8,25 @@
 
 		public function actionIndex() {
 			header('P3P: CP="IE is often a NIGHTMARE"');
+			
+			$model = new Newsletter;
+			$model -> setScenario('Newsletter');
+			if (isset($_POST['Newsletter'])) {
 
-			d($_COOKIE);
-			d($_SESSION);
-			d($_REQUEST);
+				$model->attributes=$_POST['Newsletter'];
+				$r = $model -> save();
+				//d($r);
+				if ($r) {
+					//d($model->id);
+					//d($_POST['Frase']);
+					//d($model->attributes);
+
+					$formStatus = 1;
+				} else {
+					$formStatus = -1;
+				}
+			}
+
 			$redirect = $this -> pageRedirect();
 
 			$auth = $this->authenticate();
@@ -61,12 +76,12 @@
 		
 		public function actionFanpage() {
 			header('P3P: CP="IE is often a NIGHTMARE"');
-			$model = new Newsletter;
-			$model -> setScenario('Newsletter');
 			$formStatus = 0;
 			$auth = $this->authenticate();
 			//$userinfo = Yii::app()->facebook->getInfo();
 
+			$model = new Newsletter;
+			$model -> setScenario('Newsletter');
 			if (isset($_POST['Newsletter'])) {
 
 				$model->attributes=$_POST['Newsletter'];
@@ -101,8 +116,8 @@
 				}
 				$this -> render('fanpage', array('model'=>$model,
 												 'userId'=>$appData->userId,
-												'userp'=>$appData->userp, 
-												'usern'=>$appData->usern, 
+												 'userp'=>$appData->userp, 
+												 'usern'=>$appData->usern, 
 												 'id0'=>$appData->id0, 
 												 'id0p'=>$appData->id0p, 
 												 'id0un'=>$appData->id0un,

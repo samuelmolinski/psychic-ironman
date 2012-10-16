@@ -29,6 +29,6 @@
 	<div class='board share'>
 		<a href="https://twitter.com/MSF_brasil" target="_blank"><img src="<?php echo Yii::app()-> params['root']; ?>/images/logo-twitter.png" /></a>
 		<hr />
-		<a href="https://www.msf.org.br/doador-sem-fronteiras" target="_blank"><img src="<?php echo Yii::app()-> params['root']; ?>/images/logo-doe.png" /></a>
+		<a href="https://www.msf.org.br/formulario_doacao.aspx?source=poderdocurtir" target="_blank"><img src="<?php echo Yii::app()-> params['root']; ?>/images/logo-doe.png" /></a>
 	</div>
 </div>

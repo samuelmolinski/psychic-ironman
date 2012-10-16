@@ -82,7 +82,7 @@ h5,.h5{font-size:0.846em;line-height:2.09em;text-transform:uppercase;letter-spac
 .container{width:750px;margin:0 auto;}
 #content{margin-top:2.2em;}
 #logoVideo{margin-top:30px;}#logoVideo .cutir{width:230px;float:left;}#logoVideo .cutir img{display:block;margin:auto;}
-#logoVideo .cutir .msf-logo{width:155px;}
+#logoVideo .cutir .msf-logo{width:168px;}
 #logoVideo .cutir .msf-curtir{margin-top:6px;width:190px;}
 #logoVideo .mainVideo{background:url('../images/bg-video.png');width:509px;height:352px;float:right;}#logoVideo .mainVideo iframe{margin:7px 0 0 17px;}
 #network{margin-top:30px;}#network .rede{float:left;}
@@ -129,7 +129,7 @@ hr.bot{width:608px;margin:auto;border-width:3px;}
 #callToAction .inscreva-se table{border-collapse:collapse;border-spacing:0;}
 #callToAction .inscreva-se #rbtDoou tr td{width:58px !important;}
 #callToAction .inscreva-se input#Newsletter_jahFezDoacoes01,#callToAction .inscreva-se input#Newsletter_jahFezDoacoes02{float:left;width:20px;}
-#callToAction .inscreva-se input#btnGravarUsuario{background-image:url("../images/ui-button-enviar.png");background-position:top;width:95px;height:34px;float:right;padding:0px;border-width:0px;}#callToAction .inscreva-se input#btnGravarUsuario:hovver{background-position:bottom;}
+#callToAction .inscreva-se #btnGravarUsuario-fake{background-image:url("../images/ui-button-enviar.png");background-position:top;width:95px;height:34px;float:right;padding:0px;border-width:0px;}#callToAction .inscreva-se #btnGravarUsuario-fake:hover{background-position:bottom;}
 #callToAction .buttons{float:left;}
 #callToAction .compartilhe{float:left;background-image:url("../images/ui-button-poderCurtir-you.png");height:110px;width:110px;}#callToAction .compartilhe.other{background-image:url("../images/ui-button-poderCurtir-other.png");}
 #callToAction .discover{float:left;background-image:url("../images/ui-button-convideAmigos-you.png");height:110px;width:110px;}#callToAction .discover.other{background-image:url("../images/ui-button-convideAmigos-other.png");}
@@ -168,7 +168,7 @@ hr.bot{width:608px;margin:auto;border-width:3px;}
 #allowed_tags{margin:1.5em 10px 0.7335em 0;}
 .nocomments{margin:0 20px 1.1em;}
 .widget ul li{}
-#footer{margin-top:30px;min-height:110px;clear:both;background-image:url(../images/black-o05.png);}#footer>div{margin-top:32px;margin:0 auto;width:650px;margin-top:35px;}
-#footer .text{font-size:10px;line-height:1em;margin-top:24px;padding-left:8px;}
+#footer{margin-top:30px;min-height:110px;clear:both;background-image:url(../images/black-o05.png);}#footer>div{margin-top:20px;margin:0 auto;width:665px;margin-top:35px;}
+#footer .text{font-size:10px;line-height:1em;margin-top:30px;padding-left:8px;}
 #footer .logo>img{display:block;}
 #footer .logo,#footer .text{float:left;}

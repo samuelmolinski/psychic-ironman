@@ -106,5 +106,6 @@ return array(
 		'FB_url' => 'https://www.facebook.com/MedicosSemFronteiras/app_402784116453669',
 		//'root' => 'http://cabanapps.com.br/apps/poderDoSeuCurtir',
 		'root' => 'https://www.msf.org.br/poderdocurtir',
+		'home' => 'https://www.msf.org.br/poderdocurtir/index.php/fb_page/index',
 	),
 );

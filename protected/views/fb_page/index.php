@@ -99,8 +99,9 @@
 						</tbody>
 					</table>
                 </span>
+                <button name="btnGravarUsuario" class="bot-enviar btn" id="btnGravarUsuario-fake">
                 <?php
-					echo CHtml::submitButton('', array('id'=>'btnGravarUsuario', 'class'=>'bot-enviar btn', 'name'=>"btnGravarUsuario"));
+					echo CHtml::submitButton('', array('id'=>'btnGravarUsuario', 'name'=>"btnGravarUsuario", 'style'=>'display:none;'));
 				?>
                 <!-- <input type="image" name="btnGravarUsuario" id="btnGravarUsuario" class="bot-enviar" src="https://www.msf.org.br/imagens/botoes/bot-enviar-news.gif" onclick="return validaNewsLetterHome();" style="border-width:0px;"> -->
                 <?php $this -> endWidget(); ?>

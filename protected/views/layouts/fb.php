@@ -47,7 +47,7 @@
 				$('#lblUf').removeClass('error');
 			}
 		});
-		$("#Newsletter-form").submit(function() {
+		$("#btnGravarUsuario-fake").click(function() {
 			
 			var nome = $('#Newsletter_nome').val();
 			var email = $('#Newsletter_email').val();
@@ -71,11 +71,7 @@
 				else if((cidade == '')||(cidade == 'Cidade')){
 					$('#Newsletter_cidade').addClass('error');
 					alert("Por favor, preencha sua cidade.");	
-				}
-				else {
-					//alert("Seu cadastro foi realizado com sucesso. Obrigado.");
-					return false;
-				};				
+				}			
 				/*if(!($('#Newsletter_jahFezDoacoes01').is(':checked'))||($('#Newsletter_jahFezDoacoes02').is(':checked'))){
 					$('#Newsletter_jahFezDoacoes01, #Newsletter_jahFezDoacoes02').addClass('error');
 					alert("Por favor, diga se já doou para o MSF.");	
@@ -83,6 +79,21 @@
 				return false;
 		  		
 			} 
+			var myWindow = alert("Seu cadastro foi realizado com sucesso. Obrigado.");
+			/*	window.console.log('submit form');
+			var callback = function(){
+				window.console.log('submit form');
+			 	$("#Newsletter-form").trigger('submit');
+			};
+
+			$(myWindow).unload(function(){
+			  if(this.location == "about:blank"){
+			    $(myWindow).unload(callback);
+			  } else {
+			    callback();
+			  }
+			});*/
+			//return false;
 		});
 		$(".btn curtir iframe").click(function(){
 			if(!window.fb_totallikes_clicked) {
