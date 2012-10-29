@@ -1,5 +1,42 @@
 <?php 
-	$states = array( 0=>'UF','AC'=>'AC','AL'=>'AL','AM'=>'AM','AP'=>'AP','BA'=>'BA','CE'=>'CE','DF'=>'DF','ES'=>'ES','GO'=>'GO','MA'=>'MA','MG'=>'MG','MS'=>'MS','MT'=>'MT','PA'=>'PA','PB'=>'PB','PI'=>'PI','PR'=>'PR','RJ'=>'RJ','RN'=>'RN','RO'=>'RO','RR'=>'RR','RS'=>'RS','SC'=>'SC','SE'=>'SE','SP'=>'SP','TO'=>'TO');
+	/*function make_seed()
+	{
+	  list($usec, $sec) = explode(' ', microtime());
+	  return (float) $sec + ((float) $usec * 100000);
+	}*/
+	//mt_srand(make_seed());
+	//the video codes for the youtube videos
+	$youtubeVideos = array('9-QKKTkfEjM', '-6nGltJssuQ', 'F57kVayRD9I', 'Wp5RzsT530s', 'jXaQAc6YcRw', 'Lmi4fRWOIds', 'hkiv4QFrOAs');
+	$cur = '';
+	$videoThumbs = '';
+	$first = true;
+	$randval = mt_rand(0, 6);
+	do {
+		$randval2 = mt_rand(0, 6);
+	} while ($randval2 == $randval);
+	
+		//d($randval);
+		//d($randval2);
+	for ($i=0; $i < count($youtubeVideos); $i++) {
+		if(($i != $randval)&&($i != $randval2)) {
+			//d($i);
+			$li = '<li';
+			if($first) {
+				$li .= ' class="cur"';
+			}
+			$li .= '><span class="icon-play"></span><img src="'.Yii::app()-> params['root'].'/timthumb.php?h=95&w=175&zc=1&src=https://img.youtube.com/vi/';
+			$li .= $youtubeVideos[$i].'/0.jpg" rel="'.$youtubeVideos[$i].'" ></li>';
+			$videoThumbs .= $li;
+			if($first) {
+				$cur = $youtubeVideos[$i];
+			}
+			//d($li);
+			$first = false;
+		}
+	}
+
+
+	$states = array( 0=>'UF','AC'=>'AC','AL'=>'AL','AM'=>'AM','AP'=>'AP','BA'=>'BA','CE'=>'CE','DF'=>'DF','ES'=>'ES','GO'=>'GO','MA'=>'MA','MG'=>'MG','MS'=>'MS','MT'=>'MT','PA'=>'PA','PB'=>'PB','PE'=>'PE','PI'=>'PI','PR'=>'PR','RJ'=>'RJ','RN'=>'RN','RO'=>'RO','RR'=>'RR','RS'=>'RS','SC'=>'SC','SE'=>'SE','SP'=>'SP','TO'=>'TO');
 	$fbCount1 = get_facebook_count('https://www.facebook.com/MedicosSemFronteiras');
 	$totalLikes = $fbCount1->like_count;
 ?>
@@ -9,7 +46,7 @@
 		<img class="msf-curtir" src="<?php echo Yii::app()-> params['root']; ?>/images/logo-poderDoSeuCurtir.png">
 	</div>
 	<div class="mainVideo">
-		<iframe width="485" height="296" src="https://www.youtube.com/embed/TCx9DGI_dBQ" frameborder="0" allowfullscreen></iframe>
+		<iframe width="485" height="296" src="https://www.youtube.com/embed/TCx9DGI_dBQ?wmode=transparent" frameborder="0" allowfullscreen></iframe>
 	</div>
 </div>
 <div id="network" class="clearfix">
@@ -28,14 +65,16 @@
 <div id="videos" class="clearfix">
 	<div class="title"></div>
 	<div class="presentedVideos">
-		<div id="currentVideo"><iframe src="https://www.youtube.com/embed/jXaQAc6YcRw" frameborder="0"  width="365" height="200"></iframe></div>
+		<div id="currentVideo"><iframe src="https://www.youtube.com/embed/<?php echo $cur; ?>?wmode=transparent" frameborder="0"  width="365" height="206"></iframe></div>
 		<div class="videoThumbnails clearfix">
-			<ul>
-				<li class="cur"><span class="icon-play"></span><img src="<?php echo Yii::app()-> params['root']; ?>/timthumb.php?h=95&w=175&zc=1&src=https://img.youtube.com/vi/jXaQAc6YcRw/0.jpg" rel='jXaQAc6YcRw' ></li>
+			<ul><?php 
+					echo $videoThumbs;
+				?>
+				<!-- <li class="cur"><span class="icon-play"></span><img src="<?php echo Yii::app()-> params['root']; ?>/timthumb.php?h=95&w=175&zc=1&src=https://img.youtube.com/vi/jXaQAc6YcRw/0.jpg" rel='jXaQAc6YcRw' ></li>
 				<li><span class="icon-play"></span><img src="<?php echo Yii::app()-> params['root']; ?>/timthumb.php?h=95&w=175&zc=1&src=https://img.youtube.com/vi/9-QKKTkfEjM/0.jpg" rel='9-QKKTkfEjM' ></li>
 				<li><span class="icon-play"></span><img src="<?php echo Yii::app()-> params['root']; ?>/timthumb.php?h=95&w=175&zc=1&src=https://img.youtube.com/vi/-6nGltJssuQ/0.jpg" rel='-6nGltJssuQ' ></li>
 				<li><span class="icon-play"></span><img src="<?php echo Yii::app()-> params['root']; ?>/timthumb.php?h=95&w=175&zc=1&src=https://img.youtube.com/vi/F57kVayRD9I/0.jpg" rel='F57kVayRD9I' ></li>
-				<li><span class="icon-play"></span><img src="<?php echo Yii::app()-> params['root']; ?>/timthumb.php?h=95&w=175&zc=1&src=https://img.youtube.com/vi/Wp5RzsT530s/0.jpg" rel='Wp5RzsT530s' ></li>
+				<li><span class="icon-play"></span><img src="<?php echo Yii::app()-> params['root']; ?>/timthumb.php?h=95&w=175&zc=1&src=https://img.youtube.com/vi/Wp5RzsT530s/0.jpg" rel='Wp5RzsT530s' ></li> -->
 			</ul>
 		</div>
 	</div>
@@ -78,11 +117,11 @@
 					<?php echo $form->textField($model, 'cidade', array('value'=>'Cidade', 'class'=>'g required', 'onfocus' => 'limpaInputs(this,\'Cidade\')', 'onblur' => 'voltaInputs(this,\'Cidade\')')); ?>
                 </span>
                 
-                <span>
-                    <label style="color:#777777;">Já doou para a MSF?</label>
+                <span  style="float:left;clear:both;">
+                    <label style="color:#777777;" >Já doou para a MSF?</label>
                     <br>
 
-                    <table id="rbtDoou" cellspacing="2" cellpadding="2" border="0">
+                    <table id="rbtDoou" cellspacing="2" cellpadding="2" border="0"  style="float:left;clear:both;">
 						<tbody>
 							<tr>
 								<td><span style="color: rgb(119, 119, 119);">
@@ -99,7 +138,7 @@
 						</tbody>
 					</table>
                 </span>
-                <button name="btnGravarUsuario" class="bot-enviar btn" id="btnGravarUsuario-fake">
+                <input type='button' name="btnGravarUsuario" class="bot-enviar btn" id="btnGravarUsuario-fake" />
                 <?php
 					echo CHtml::submitButton('', array('id'=>'btnGravarUsuario', 'name'=>"btnGravarUsuario", 'style'=>'display:none;'));
 				?>

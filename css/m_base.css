@@ -130,6 +130,7 @@ hr.bot{width:608px;margin:auto;border-width:3px;}
 #callToAction .inscreva-se #rbtDoou tr td{width:58px !important;}
 #callToAction .inscreva-se input#Newsletter_jahFezDoacoes01,#callToAction .inscreva-se input#Newsletter_jahFezDoacoes02{float:left;width:20px;}
 #callToAction .inscreva-se #btnGravarUsuario-fake{background-image:url("../images/ui-button-enviar.png");background-position:top;width:95px;height:34px;float:right;padding:0px;border-width:0px;}#callToAction .inscreva-se #btnGravarUsuario-fake:hover{background-position:bottom;}
+#callToAction .inscreva-se #btnGravarUsuario{display:none;}
 #callToAction .buttons{float:left;}
 #callToAction .compartilhe{float:left;background-image:url("../images/ui-button-poderCurtir-you.png");height:110px;width:110px;}#callToAction .compartilhe.other{background-image:url("../images/ui-button-poderCurtir-other.png");}
 #callToAction .discover{float:left;background-image:url("../images/ui-button-convideAmigos-you.png");height:110px;width:110px;}#callToAction .discover.other{background-image:url("../images/ui-button-convideAmigos-other.png");}

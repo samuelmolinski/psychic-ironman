@@ -7,7 +7,7 @@ if(!window.log) {window.log = function() {log.history = log.history || [];log.hi
 		$('.videoThumbnails li').click(function(){
 			$('.videoThumbnails li.cur').removeClass('cur');
 			$(this).addClass('cur');
-			var link = 'https://www.youtube.com/embed/'+$(this).find('img').attr('rel');
+			var link = 'https://www.youtube.com/embed/'+$(this).find('img').attr('rel')+'?wmode=transparent';
 			log(link);
 			$('#currentVideo iframe').attr('src', link);
 		});

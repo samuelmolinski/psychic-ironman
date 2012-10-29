@@ -13,7 +13,7 @@
 	$friend0['photo'] = $p->getRealUrl("https://graph.facebook.com/$id0/picture?type=large");
 	$friend1['photo'] = $p->getRealUrl("https://graph.facebook.com/$id1/picture?type=large");
 	$friend2['photo'] = $p->getRealUrl("https://graph.facebook.com/$id2/picture?type=large");*/
-	$states = array( 0=>'UF','AC'=>'AC','AL'=>'AL','AM'=>'AM','AP'=>'AP','BA'=>'BA','CE'=>'CE','DF'=>'DF','ES'=>'ES','GO'=>'GO','MA'=>'MA','MG'=>'MG','MS'=>'MS','MT'=>'MT','PA'=>'PA','PB'=>'PB','PI'=>'PI','PR'=>'PR','RJ'=>'RJ','RN'=>'RN','RO'=>'RO','RR'=>'RR','RS'=>'RS','SC'=>'SC','SE'=>'SE','SP'=>'SP','TO'=>'TO');
+	$states = array( 0=>'UF','AC'=>'AC','AL'=>'AL','AM'=>'AM','AP'=>'AP','BA'=>'BA','CE'=>'CE','DF'=>'DF','ES'=>'ES','GO'=>'GO','MA'=>'MA','MG'=>'MG','MS'=>'MS','MT'=>'MT','PA'=>'PA','PB'=>'PB','PE'=>'PE','PI'=>'PI','PR'=>'PR','RJ'=>'RJ','RN'=>'RN','RO'=>'RO','RR'=>'RR','RS'=>'RS','SC'=>'SC','SE'=>'SE','SP'=>'SP','TO'=>'TO');
 
 	$root = Yii::app()-> params['root'];
 	
@@ -39,7 +39,7 @@
 ?>
 <div id='fanpage'>
 	
-	<a href="https://www.facebook.com/MedicosSemFronteiras/app_402784116453669" target="_blank"><img id="poderDoSueCurtirLG" src="<?php echo Yii::app()->params['root']; ?>/images/logo-poderDoSeuCurtir-lg.png"/></a>
+	<a href="<?php echo CHtml::normalizeUrl(array('fb_page/index')); ?>" ><img id="poderDoSueCurtirLG" src="<?php echo Yii::app()->params['root']; ?>/images/logo-poderDoSeuCurtir-lg.png"/></a>
     
 	<div class="userTitle">
 		<span class='intro'><hr class="por part"/><span class="subtitle">POR</span><hr class="por part"/></span>
@@ -136,11 +136,11 @@
                 <span class="campo gg">      
 					<?php echo $form->textField($model, 'cidade', array('value'=>'Cidade', 'class'=>'g required', 'onfocus' => 'limpaInputs(this,\'Cidade\')', 'onblur' => 'voltaInputs(this,\'Cidade\')')); ?>
                 </span>
-                <span>
+                <span style="float:left;clear:both;">
                     <label style="color:#777777;">Já doou para a MSF?</label>
                     <br>
 
-                    <table id="rbtDoou" cellspacing="2" cellpadding="2" border="0">
+                    <table id="rbtDoou" cellspacing="2" cellpadding="2" border="0"  style="float:left;clear:both;">
 						<tbody>
 							<tr>
 								<td><span style="color: rgb(119, 119, 119);">
@@ -157,7 +157,7 @@
 						</tbody>
 					</table>
                 </span>
-                <button name="btnGravarUsuario" class="bot-enviar btn" id="btnGravarUsuario-fake">
+                <input type='button' name="btnGravarUsuario" class="bot-enviar btn" id="btnGravarUsuario-fake" />
                 <?php
 					echo CHtml::submitButton('', array('id'=>'btnGravarUsuario', 'name'=>"btnGravarUsuario", 'style'=>'display:none;'));
 				?>

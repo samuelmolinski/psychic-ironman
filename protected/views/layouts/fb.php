@@ -21,6 +21,7 @@
 	<script src="<?php echo Yii::app()->params['root']; ?>/js/browserDetect.js" type="text/javascript"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+	<?php if(!isset($_GET['layoutMode'])) { ?>
 	<script type="text/javascript">
 		//var FacebookURL = '<?php echo Fb_pageController::genRedirect($this->getAction()->getId()); ?>';
 		var FacebookURL = '<?php echo Fb_pageController::genRedirect("fanpage"); ?>';
@@ -30,6 +31,7 @@
 		} 
 
 	</script>
+	<?php } ?>
 	<script type="text/javascript">
 	if(null == window.fb_totallikes_clicked) {
 		window.fb_totallikes_clicked = false;
@@ -71,29 +73,11 @@
 				else if((cidade == '')||(cidade == 'Cidade')){
 					$('#Newsletter_cidade').addClass('error');
 					alert("Por favor, preencha sua cidade.");	
-				}			
-				/*if(!($('#Newsletter_jahFezDoacoes01').is(':checked'))||($('#Newsletter_jahFezDoacoes02').is(':checked'))){
-					$('#Newsletter_jahFezDoacoes01, #Newsletter_jahFezDoacoes02').addClass('error');
-					alert("Por favor, diga se já doou para o MSF.");	
-				}*/	
+				}		
 				return false;
 		  		
 			} 
 			var myWindow = alert("Seu cadastro foi realizado com sucesso. Obrigado.");
-			/*	window.console.log('submit form');
-			var callback = function(){
-				window.console.log('submit form');
-			 	$("#Newsletter-form").trigger('submit');
-			};
-
-			$(myWindow).unload(function(){
-			  if(this.location == "about:blank"){
-			    $(myWindow).unload(callback);
-			  } else {
-			    callback();
-			  }
-			});*/
-			//return false;
 		});
 		$(".btn curtir iframe").click(function(){
 			if(!window.fb_totallikes_clicked) {
@@ -169,26 +153,6 @@
 <body>	
 <div id="fb-root"></div>
 <div id="whiteout_overlay" style="position:absolute;z-index:99998;background:#FFF;width:100%;height:100%"><img src="<?php echo Yii::app()->params['root']; ?>/images/spinning.gif" class="loadingGif" style="position:relative; display:block; margin: 350px auto 0;" /></div>
-<!--<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=402784116453669";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-FB.init({
- appId  : '402784116453669',
- status : false, // check login status
- cookie : true, // enable cookies to allow the server to access the session
- xfbml  : true// parse XFBML
- });
-
- //FB.Canvas.setSize({ height: 3400px });
- FB.Canvas.setAutoGrow(7);
-
-setInterval( function() {FB.Canvas.setSize($(document).height());}, 500);
- </script>-->
     <!-- then we have to include the all.js file -->
     <script src="https://connect.facebook.net/pt_BR/all.js" type="text/javascript"></script>
     <!-- and finally we can use the FB JS SDK and it will actually work :) -->

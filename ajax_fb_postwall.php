@@ -28,7 +28,7 @@
 		//d($user);
 		try {
 			$publishStream = $facebookObj->api("/$user/feed", 'post', array(
-					'message' => $name.' descobriu o Poder do Curtir dele. Descubra o seu.', //$message,
+					'message' => $name.' descobriu o Poder do Curtir dele(a). Descubra o seu.', //$message,
 					'link'    => $shareLink, //'https://www.facebook.com/MedicosSemFronteiras/app_402784116453669',
 					'picture' => 'http://www.msf.org.br/poderdocurtir/images/icons/Icone_app_111x74.png',
 					//'name'    => $name, //$name,
