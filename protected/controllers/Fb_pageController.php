@@ -192,7 +192,7 @@
 		}
 
 		public function authenticate() {
-			
+			session_start();
 			// if logging out
 			if (isset($_GET['logout'])) {
 			    session_unset();
@@ -209,10 +209,10 @@
 					header('P3P: CP="IE is often a NIGHTMARE"');
 			        $this->fb_user_profile = (object) Yii::app()->facebook->api("/{$_SESSION['fb_userId']}");
 			        $this->fb_userId = $_SESSION['fb_userId'];
-			       	//$token = 'fb_'.Yii::app()->facebook->appId.'_access_token';
+			        $token = 'fb_'.Yii::app()->facebook->appId.'_access_token';
 
-			        //if (isset($_SESSION[$token])) {
-			        if (isset($_REQUEST['code'])) {
+			        if (isset($_SESSION[$token])) {
+			        //if (isset($_REQUEST['state'])) {
 			        	$this->fb_authorized = TRUE;
 			        	$this->fb_loginUrl = "<a href='".CHtml::normalizeUrl(array('fb_page/fanpage'))."' class='btn connectFacebook' id='fb-login' ></a>";
 			        } else {
@@ -237,8 +237,7 @@
 			        }
 			    }
 			// else attempting to log in
-			} else if (Yii::app()->facebook->getUser()) {
-				session_start();			
+			} else if (Yii::app()->facebook->getUser()) {			
 			    $this->fb_userId = Yii::app()->facebook->getUser();
 			    if ($this->fb_userId) {
 			        // login successful
@@ -250,9 +249,10 @@
 			    exit;
 			// if user not logged in, or access token invalidated
 			} else {
-				$link = Yii::app()->facebook->getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream'));
-				$fbConnectLink = "<a href='#'  id='fb-login' onclick='setTimeout(function() {top.location.href = \"$link\"}, 500);' class='btn connectFacebook'></a>";
-			    $this->fb_loginUrl = $fbConnectLink;
+				//$link = Yii::app()->facebook->getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream'));
+				//$fbConnectLink = "<a href='#'  id='fb-login' onclick='setTimeout(function() {top.location.href = \"$link\"}, 500);' class='btn connectFacebook'></a>";
+			    //$this->fb_loginUrl = $fbConnectLink;
+			    $this->fb_loginUrl = "<a href='".CHtml::normalizeUrl(array('fb_page/fanpage'))."' class='btn connectFacebook' id='fb-login' ></a>";
 			}
 
 			//d($_SESSION);
