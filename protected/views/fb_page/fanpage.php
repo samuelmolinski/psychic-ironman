@@ -165,7 +165,7 @@
                 <?php $this -> endWidget(); ?>
             </div>
             <!-- end yes widget if -->
-            <?php } d($visitor);?>
+            <?php } //d($visitor);?>
 		</div>
 	</div>
 </div>

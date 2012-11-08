@@ -631,10 +631,12 @@ abstract class BaseFacebook
         $this->clearPersistentData('state');
         return $_REQUEST['code'];
       } else {
-        print_r($_SESSION);
-        print_r($_REQUEST);
-        exit();
+        //print_r($_SESSION);
+        //print_r($_REQUEST);
+        //exit();
         //self::errorLog('CSRF state token does not match one provided.');
+        header('location: https://www.facebook.com/MedicosSemFronteiras/app_402784116453669');
+        exit();
         return false;
       }
     }

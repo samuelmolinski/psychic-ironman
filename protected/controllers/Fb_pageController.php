@@ -249,10 +249,10 @@
 			    exit;
 			// if user not logged in, or access token invalidated
 			} else {
-				//$link = Yii::app()->facebook->getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream'));
-				//$fbConnectLink = "<a href='#'  id='fb-login' onclick='setTimeout(function() {top.location.href = \"$link\"}, 500);' class='btn connectFacebook'></a>";
-			    //$this->fb_loginUrl = $fbConnectLink;
-			    $this->fb_loginUrl = "<a href='".CHtml::normalizeUrl(array('fb_page/fanpage'))."' class='btn connectFacebook' id='fb-login' ></a>";
+				$link = Yii::app()->facebook->getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,publish_stream,read_stream'));
+				$fbConnectLink = "<a href='#'  id='fb-login' onclick='setTimeout(function() {top.location.href = \"$link\"}, 500);' class='btn connectFacebook'></a>";
+			    $this->fb_loginUrl = $fbConnectLink;
+			    //$this->fb_loginUrl = "<a href='".CHtml::normalizeUrl(array('fb_page/fanpage'))."' class='btn connectFacebook' id='fb-login' ></a>";
 			}
 
 			//d($_SESSION);

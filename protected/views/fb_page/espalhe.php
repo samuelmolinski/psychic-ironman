@@ -5,7 +5,7 @@
 	<a href="<?php echo CHtml::normalizeUrl(array('fb_page/index')); ?>"><img class="msf-logo-espalhe" src="<?php echo Yii::app()-> params['root']; ?>/images/logo-espalhe.png"></a>
 </div>
 <div class="espalheIntro">
-	<p>Faça download de uma das nossas imagens <br />e coloque como fundo do seu perfil no Facebook.</p>
+	<p>Faça download de uma das nossas imagens <br />e coloque como foto de capa do seu perfil no Facebook.</p>
 
 </div>
 <div id="boards" class="clearfix">

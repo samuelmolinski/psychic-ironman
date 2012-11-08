@@ -78,6 +78,7 @@
 		  		
 			} 
 			var myWindow = alert("Seu cadastro foi realizado com sucesso. Obrigado.");
+			$('#btnGravarUsuario').trigger('click');
 		});
 		$(".btn curtir iframe").click(function(){
 			if(!window.fb_totallikes_clicked) {

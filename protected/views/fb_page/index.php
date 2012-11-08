@@ -6,20 +6,18 @@
 	}*/
 	//mt_srand(make_seed());
 	//the video codes for the youtube videos
-	$youtubeVideos = array('9-QKKTkfEjM', '-6nGltJssuQ', 'F57kVayRD9I', 'Wp5RzsT530s', 'jXaQAc6YcRw', 'Lmi4fRWOIds', 'hkiv4QFrOAs');
+	$youtubeVideos = array('9-QKKTkfEjM', '-6nGltJssuQ', 'F57kVayRD9I', 'Wp5RzsT530s', 'jXaQAc6YcRw', 'Lmi4fRWOIds', 'hkiv4QFrOAs', 'cAP3kunm5X4');
+	shuffle($youtubeVideos);
+	do{
+		array_pop($youtubeVideos);
+	}while(count($youtubeVideos) > 5);
+	
 	$cur = '';
 	$videoThumbs = '';
 	$first = true;
-	$randval = mt_rand(0, 6);
-	do {
-		$randval2 = mt_rand(0, 6);
-	} while ($randval2 == $randval);
 	
-		//d($randval);
-		//d($randval2);
 	for ($i=0; $i < count($youtubeVideos); $i++) {
-		if(($i != $randval)&&($i != $randval2)) {
-			//d($i);
+		
 			$li = '<li';
 			if($first) {
 				$li .= ' class="cur"';
@@ -30,9 +28,9 @@
 			if($first) {
 				$cur = $youtubeVideos[$i];
 			}
-			//d($li);
+			
 			$first = false;
-		}
+		
 	}
 
 
