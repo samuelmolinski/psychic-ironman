@@ -10,6 +10,7 @@ $config=dirname(__FILE__).'/protected/config/main.php';
 // specify how many levels of call stack should be shown in each log message
 //defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
+require_once('phpmailer.inc.php');
 require_once('m_super_dump.php');
 require_once('m_socialMedia.php');
 require_once('m_uri.php');
